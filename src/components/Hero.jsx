@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { FaLinkedin, FaDownload } from 'react-icons/fa';
+import { FaLinkedin, FaDownload, FaGithub, FaArrowRight } from 'react-icons/fa';
 import { personalInfo } from '../data/portfolioData';
 import profilePic from '../assets/profile.png';
 
@@ -54,45 +54,43 @@ const Hero = () => {
             I am a <span className="text-accent-light">{personalInfo.title}</span> specializing in integrating sophisticated AI models—such as LLMs and Computer Vision—into robust modern web and mobile platforms.
           </motion.p>
           
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+            className="flex flex-wrap gap-3 justify-center md:justify-start"
           >
-            <Link 
-              to="projects" 
-              smooth={true} 
-              duration={800} 
+            <Link
+              to="projects"
+              smooth={true}
+              duration={800}
               offset={-80}
-              className="cursor-pointer px-8 py-4 bg-accent-primary text-white rounded-md font-medium text-lg hover:bg-blue-600 transition-all shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] transform hover:-translate-y-1"
+              className="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 bg-accent-primary text-white rounded-full text-sm font-semibold hover:bg-blue-600 transition-all shadow-[0_0_18px_rgba(59,130,246,0.35)] hover:shadow-[0_0_26px_rgba(59,130,246,0.55)] hover:-translate-y-0.5"
             >
-              Check out my work
+              My Work <FaArrowRight size={12} />
             </Link>
             <a
               href={personalInfo.github}
               target="_blank"
               rel="noreferrer"
-              className="px-8 py-4 bg-transparent border border-slate-600 text-slate-300 rounded-md font-medium text-lg hover:border-accent-light hover:text-accent-light transition-all transform hover:-translate-y-1"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-600 text-slate-300 rounded-full text-sm font-semibold hover:border-accent-light hover:text-accent-light hover:bg-accent-light/5 transition-all hover:-translate-y-0.5"
             >
-              Visit my GitHub
+              <FaGithub size={15} /> GitHub
             </a>
             <a
               href={personalInfo.linkedin}
               target="_blank"
               rel="noreferrer"
-              className="px-8 py-4 bg-transparent border border-slate-600 text-slate-300 rounded-md font-medium text-lg hover:border-blue-400 hover:text-blue-400 transition-all transform hover:-translate-y-1 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-600 text-slate-300 rounded-full text-sm font-semibold hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/5 transition-all hover:-translate-y-0.5"
             >
-              <FaLinkedin size={20} />
-              LinkedIn
+              <FaLinkedin size={15} /> LinkedIn
             </a>
             <a
               href="/Resume.pdf"
               download="Mudasir_Mujtaba_Resume.pdf"
-              className="px-8 py-4 bg-transparent border border-slate-600 text-slate-300 rounded-md font-medium text-lg hover:border-green-400 hover:text-green-400 transition-all transform hover:-translate-y-1 flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-600 text-slate-300 rounded-full text-sm font-semibold hover:border-emerald-400 hover:text-emerald-400 hover:bg-emerald-400/5 transition-all hover:-translate-y-0.5"
             >
-              <FaDownload size={18} />
-              Resume
+              <FaDownload size={13} /> Resume
             </a>
           </motion.div>
         </div>
