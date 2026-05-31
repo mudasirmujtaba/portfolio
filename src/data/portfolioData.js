@@ -9,6 +9,7 @@ import drumbeatImg from '../assets/drumbeat.png';
 import heartDiseaseImg from '../assets/heart_disease.png';
 import nextWordImg from '../assets/next_word.png';
 import churnImg from '../assets/churn.png';
+import remoteSensingImg from '../assets/remote_sensing.png';
 export const personalInfo = {
   name: "Mudasir Mujtaba",
   title: "Machine Learning & Full Stack Engineer",
@@ -91,6 +92,15 @@ export const experience = [
 export const projects = [
   {
     id: 1,
+    title: "Point-Supervised Remote Sensing Segmentation",
+    image: remoteSensingImg,
+    description: "Semantic segmentation of satellite & aerial imagery using only clicked point annotations (<0.2% of pixels). Custom Partial Cross Entropy + Focal Loss variant achieves 81% of full-supervision performance (mIoU 0.718) with a U-Net trained from scratch on a 5-class imbalanced land-cover dataset.",
+    tech: ["PyTorch", "U-Net", "Computer Vision", "Python", "Scikit-Learn"],
+    github: "https://github.com/mudasirmujtaba/Point-Supervised-Remote-Sensing-Segmentation",
+    featured: true
+  },
+  {
+    id: 2,
     title: "Lexibot - Legal Assistant AI",
     image: lexibotImg,
     description: "A comprehensive platform helping legal professionals manage cases and research documents using cutting-edge AI. Features vector search (FAISS) and LLM inference (Groq/OpenAI).",
@@ -99,7 +109,7 @@ export const projects = [
     featured: true
   },
   {
-    id: 2,
+    id: 3,
     title: "Vision LLM",
     image: visionLlmImg,
     description: "Real-time camera analytics pipeline combining computer vision and Large Language Models for industrial security and productivity monitoring. Features YOLO model fine-tuning.",
@@ -108,7 +118,7 @@ export const projects = [
     featured: false
   },
   {
-    id: 3,
+    id: 4,
     title: "Candle Agent Bot",
     image: candleBotImg,
     description: "Automated cryptocurrency trading bot using candlestick chart data to make trading decisions, featuring Telegram notifications.",
@@ -117,7 +127,7 @@ export const projects = [
     featured: false
   },
   {
-    id: 4,
+    id: 5,
     title: "DrumBeat Transcriber",
     image: drumbeatImg,
     description: "Stable, automatic system for transcribing drum audio recordings into readable MIDI files. Features adaptive per-class thresholding and BPM detection.",
@@ -126,7 +136,7 @@ export const projects = [
     featured: false
   },
   {
-    id: 5,
+    id: 6,
     title: "Heart Disease Detection",
     image: heartDiseaseImg,
     description: "Machine learning application classifying heart disease risk using decision tree and KNN classification models.",
@@ -135,7 +145,7 @@ export const projects = [
     featured: false
   },
   {
-    id: 6,
+    id: 7,
     title: "Next Word Predictor",
     image: nextWordImg,
     description: "A deep learning application predicting the next word in a sequence using an LSTM neural network (150 and 100 units) trained on Shakespeare's Hamlet.",
@@ -144,7 +154,7 @@ export const projects = [
     featured: false
   },
   {
-    id: 7,
+    id: 8,
     title: "ANN Classification Churn Prediction",
     image: churnImg,
     description: "Artificial neural network classification model to predict whether a customer will churn or not based on historical data.",
