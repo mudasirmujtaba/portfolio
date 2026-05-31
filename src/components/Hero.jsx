@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { FaLinkedin, FaDownload } from 'react-icons/fa';
 import { personalInfo } from '../data/portfolioData';
 import profilePic from '../assets/profile.png';
 
@@ -68,13 +69,30 @@ const Hero = () => {
             >
               Check out my work
             </Link>
-            <a 
+            <a
               href={personalInfo.github}
               target="_blank"
               rel="noreferrer"
               className="px-8 py-4 bg-transparent border border-slate-600 text-slate-300 rounded-md font-medium text-lg hover:border-accent-light hover:text-accent-light transition-all transform hover:-translate-y-1"
             >
               Visit my GitHub
+            </a>
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="px-8 py-4 bg-transparent border border-slate-600 text-slate-300 rounded-md font-medium text-lg hover:border-blue-400 hover:text-blue-400 transition-all transform hover:-translate-y-1 flex items-center gap-2"
+            >
+              <FaLinkedin size={20} />
+              LinkedIn
+            </a>
+            <a
+              href="/Resume.pdf"
+              download="Mudasir_Mujtaba_Resume.pdf"
+              className="px-8 py-4 bg-transparent border border-slate-600 text-slate-300 rounded-md font-medium text-lg hover:border-green-400 hover:text-green-400 transition-all transform hover:-translate-y-1 flex items-center gap-2"
+            >
+              <FaDownload size={18} />
+              Resume
             </a>
           </motion.div>
         </div>

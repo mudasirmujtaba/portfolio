@@ -38,7 +38,7 @@ A modern, highly polished, and responsive personal portfolio showcasing my educa
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Mudasir123r2/portfolio.git
+   git clone https://github.com/mudasirmujtaba/portfolio.git
    cd portfolio
    ```
 
@@ -65,5 +65,5 @@ The entire portfolio is designed to be easily configurable. To update your bio, 
 
 ## 👨‍💻 Author
 **Mudasir Mujtaba**
-- [LinkedIn](https://www.linkedin.com/in/mudasir-mujtaba-660a88360/)
-- [GitHub](https://github.com/Mudasir123r2)
+- [LinkedIn](https://www.linkedin.com/in/mudasirmujtaba/)
+- [GitHub](https://github.com/mudasirmujtaba)

@@ -15,8 +15,8 @@ export const personalInfo = {
   tagline: "Building intelligent systems and modern web applications with cutting-edge AI and full-stack technologies.",
   email: "mudasirmujtaba15@gmail.com",
   phone: "03112304843",
-  linkedin: "https://www.linkedin.com/in/mudasir-mujtaba-660a88360/",
-  github: "https://github.com/Mudasir123r2",
+  linkedin: "https://www.linkedin.com/in/mudasirmujtaba/",
+  github: "https://github.com/mudasirmujtaba",
   bio: "I am a Computer Science graduate from Sukkur IBA University (2022-2026) with a strong foundation in Machine Learning, Deep Learning, and Full Stack Development. I specialize in building end-to-end applications that integrate sophisticated AI models—such as LLMs, NLP pipelines, and Computer Vision—into robust web and mobile platforms. I am passionate about creating intelligent solutions that solve real-world problems."
 };
 
@@ -95,7 +95,7 @@ export const projects = [
     image: lexibotImg,
     description: "A comprehensive platform helping legal professionals manage cases and research documents using cutting-edge AI. Features vector search (FAISS) and LLM inference (Groq/OpenAI).",
     tech: ["React", "FastAPI", "MongoDB", "LangChain", "Groq API"],
-    github: "https://github.com/Mudasir123r2/Lexibot-Legal-Assistant-AI-Application.git",
+    github: "https://github.com/mudasirmujtaba/Lexibot-Legal-Assistant-AI-Application.git",
     featured: true
   },
   {
@@ -104,7 +104,7 @@ export const projects = [
     image: visionLlmImg,
     description: "Real-time camera analytics pipeline combining computer vision and Large Language Models for industrial security and productivity monitoring. Features YOLO model fine-tuning.",
     tech: ["Python", "YOLO", "LLM", "React", "CV"],
-    github: "https://github.com/Mudasir123r2/vision_llm.git",
+    github: "https://github.com/mudasirmujtaba/vision_llm.git",
     featured: false
   },
   {
@@ -113,7 +113,7 @@ export const projects = [
     image: candleBotImg,
     description: "Automated cryptocurrency trading bot using candlestick chart data to make trading decisions, featuring Telegram notifications.",
     tech: ["Python", "Trading APIs", "Telegram API", "Data Analysis"],
-    github: "https://github.com/Mudasir123r2/candle_bot_project.git",
+    github: "https://github.com/mudasirmujtaba/candle_bot_project.git",
     featured: false
   },
   {
@@ -122,7 +122,7 @@ export const projects = [
     image: drumbeatImg,
     description: "Stable, automatic system for transcribing drum audio recordings into readable MIDI files. Features adaptive per-class thresholding and BPM detection.",
     tech: ["Python", "Neural Networks", "Audio Processing", "MIDI"],
-    github: "https://github.com/Mudasir123r2/drum-detection.git",
+    github: "https://github.com/mudasirmujtaba/drum-detection.git",
     featured: false
   },
   {
@@ -131,7 +131,7 @@ export const projects = [
     image: heartDiseaseImg,
     description: "Machine learning application classifying heart disease risk using decision tree and KNN classification models.",
     tech: ["Machine Learning", "Scikit-Learn", "Python", "Data Science"],
-    github: "https://github.com/Mudasir123r2/Heart-Disease-Detection.git",
+    github: "https://github.com/mudasirmujtaba/Heart-Disease-Detection.git",
     featured: false
   },
   {
@@ -140,7 +140,7 @@ export const projects = [
     image: nextWordImg,
     description: "A deep learning application predicting the next word in a sequence using an LSTM neural network (150 and 100 units) trained on Shakespeare's Hamlet.",
     tech: ["LSTM", "Python", "Streamlit", "Deep Learning", "NLTK"],
-    github: "https://github.com/Mudasir123r2/Next-Word-Predictor.git",
+    github: "https://github.com/mudasirmujtaba/Next-Word-Predictor.git",
     featured: false
   },
   {
@@ -149,7 +149,7 @@ export const projects = [
     image: churnImg,
     description: "Artificial neural network classification model to predict whether a customer will churn or not based on historical data.",
     tech: ["Python", "ANN", "Deep Learning", "Data Science"],
-    github: "https://github.com/Mudasir123r2/ANN-Classification-Churn-Prediction.git",
+    github: "https://github.com/mudasirmujtaba/ANN-Classification-Churn-Prediction.git",
     featured: false
   }
 ];
