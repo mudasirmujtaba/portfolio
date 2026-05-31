@@ -30,7 +30,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.1, ease: "easeOut" }}
-              className={`glass-card flex flex-col h-full group overflow-hidden cursor-pointer ${project.featured ? 'md:col-span-2 lg:col-span-3 max-w-md mx-auto w-full border-accent-primary/50 bg-slate-800/60' : ''}`}
+              className={`glass-card flex flex-col h-full group overflow-hidden cursor-pointer ${project.featured ? 'border-accent-primary/50 bg-slate-800/60' : ''}`}
             >
               {/* Image Container */}
               <div className="relative w-full h-48 md:h-56 overflow-hidden bg-slate-900 border-b border-slate-700/50">
