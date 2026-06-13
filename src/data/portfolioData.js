@@ -86,6 +86,13 @@ export const experience = [
     company: "Techrypt (Karachi)",
     duration: "June 2025 - August 2025",
     description: "Worked as a backend developer for the Techrypt website. Contributed to a CRM project as a full-stack developer to improve customer data handling. Developed AI Chatbots and utilized automation tools like N8N to solve real-world business challenges."
+  },
+  {
+    id: 4,
+    role: "Freelance NLP Annotation Lead",
+    company: "CrowdGen (Remote)",
+    duration: "Oct 2023",
+    description: "Led end-to-end annotation workflows for large-scale NLP projects involving multilingual datasets (Sindhi, Urdu, English) to support AI model training and evaluation. Coordinated audio transcription and data labeling tasks, ensuring high-quality, consistent annotations aligned with project standards to improve speech recognition and language understanding systems. Collaborated with distributed global teams to meet deadlines and maintain quality benchmarks."
   }
 ];
 
