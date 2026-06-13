@@ -91,7 +91,7 @@ export const experience = [
     id: 4,
     role: "Freelance NLP Annotation Lead",
     company: "CrowdGen (Remote)",
-    duration: "Oct 2023",
+    duration: "Aug 2023 - Oct 2023",
     description: "Led end-to-end annotation workflows for large-scale NLP projects involving multilingual datasets (Sindhi, Urdu, English) to support AI model training and evaluation. Coordinated audio transcription and data labeling tasks, ensuring high-quality, consistent annotations aligned with project standards to improve speech recognition and language understanding systems. Collaborated with distributed global teams to meet deadlines and maintain quality benchmarks."
   }
 ];
@@ -252,5 +252,14 @@ export const certifications = [
     skills: ["MongoDB Clusters", "Schemas", "Models"],
     url: "https://learn.mongodb.com/c/iAt4M-RTT1evlr51lCEu4g",
     icon: SiMongodb
+  },
+  {
+    id: 10,
+    title: "Large Language Models (LLMs) Concepts",
+    platform: "DataCamp",
+    platformIcon: SiDatacamp,
+    skills: ["LLMs", "Generative AI", "NLP", "Prompt Engineering"],
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/4616cc1d95d5bc6619d1ce1f8e966418e7502132",
+    icon: FaLanguage
   }
 ];
