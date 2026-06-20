@@ -174,6 +174,7 @@ export const projects = [
     id: 9,
     title: "Daily Journal Application",
     image: dailyJournalImg,
+    imagePosition: "top",
     description: "Full-stack MERN journaling web application with secure JWT-based authentication, complete CRUD functionality, global state management with Context API, client-side routing with React Router, and containerized with Docker for consistent deployment.",
     tech: ["MongoDB", "Express.js", "React", "Node.js", "JWT", "Docker", "Formik"],
     github: "https://github.com/mudasirmujtaba/Daily-Journal-App",

@@ -35,10 +35,11 @@ const Projects = () => {
               {/* Image Container */}
               <div className="relative w-full h-48 md:h-56 overflow-hidden bg-slate-900 border-b border-slate-700/50">
                 {project.image && (
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
+                  <img
+                    src={project.image}
+                    alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                    style={{ objectPosition: project.imagePosition || 'center' }}
                   />
                 )}
                 {/* Overlay on hover */}
