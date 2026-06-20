@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin, FaEnvelope, FaReact, FaNodeJs, FaPython, FaJava, FaAws, FaBrain, FaRobot, FaLanguage, FaCogs, FaBalanceScale, FaCamera, FaChartLine, FaMusic, FaHeartbeat, FaCertificate, FaLaptopCode } from 'react-icons/fa';
-import { SiTensorflow, SiKeras, SiMongodb, SiExpress, SiTypescript, SiKotlin, SiPostgresql, SiDigitalocean, SiOpencv, SiCoursera, SiDatacamp } from 'react-icons/si';
+import { SiTensorflow, SiKeras, SiMongodb, SiExpress, SiTypescript, SiKotlin, SiPostgresql, SiDigitalocean, SiOpencv, SiCoursera, SiDatacamp, SiGoogle } from 'react-icons/si';
 import { VscAzure } from 'react-icons/vsc';
 import profilePic from '../assets/profile.png';
 import lexibotImg from '../assets/lexibot.png';
@@ -77,7 +77,7 @@ export const experience = [
     id: 2,
     role: "Freelance AI & Full Stack Developer",
     company: "Fiverr",
-    duration: "Present",
+    duration: "May 2024 - Present",
     description: "Developing custom AI solutions, RAG pipelines, and LLM integrations for web applications. Building end-to-end full-stack projects for global clients focusing on machine learning, deep learning, and data science."
   },
   {
@@ -168,6 +168,15 @@ export const projects = [
     tech: ["Python", "ANN", "Deep Learning", "Data Science"],
     github: "https://github.com/mudasirmujtaba/ANN-Classification-Churn-Prediction.git",
     featured: false
+  },
+  {
+    id: 9,
+    title: "Daily Journal Application",
+    image: null,
+    description: "Full-stack MERN journaling web application with secure JWT-based authentication, complete CRUD functionality, global state management with Context API, client-side routing with React Router, and containerized with Docker for consistent deployment.",
+    tech: ["MongoDB", "Express.js", "React", "Node.js", "JWT", "Docker", "Formik"],
+    github: "https://github.com/mudasirmujtaba/Daily-Journal-App",
+    featured: false
   }
 ];
 
@@ -241,7 +250,7 @@ export const certifications = [
     platform: "Coursera",
     platformIcon: SiCoursera,
     skills: ["Node.js", "Express.js", "Backend Developer"],
-    url: "https://www.coursera.org/account/accomplishments/records/OVHTI06PQS3O",
+    url: "https://www.coursera.org/account/accomplishments/verify/OVHTI06PQS3O",
     icon: FaNodeJs
   },
   {
@@ -261,5 +270,41 @@ export const certifications = [
     skills: ["LLMs", "Generative AI", "NLP", "Prompt Engineering"],
     url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/4616cc1d95d5bc6619d1ce1f8e966418e7502132",
     icon: FaLanguage
+  },
+  {
+    id: 11,
+    title: "Google Prompting Essentials",
+    platform: "Coursera (Google)",
+    platformIcon: SiGoogle,
+    skills: ["Prompt Engineering", "Generative AI", "LLMs"],
+    url: "https://www.coursera.org/account/accomplishments/specialization/I74KQMTAP51K",
+    icon: SiGoogle
+  },
+  {
+    id: 12,
+    title: "Google AI Essentials Specialization",
+    platform: "Coursera (Google)",
+    platformIcon: SiGoogle,
+    skills: ["AI Fundamentals", "Generative AI", "Prompt Engineering"],
+    url: "https://www.coursera.org/account/accomplishments/specialization/WDEL9WC5UNOG",
+    icon: SiGoogle
+  },
+  {
+    id: 13,
+    title: "Claude with Amazon Bedrock",
+    platform: "Anthropic / AWS",
+    platformIcon: FaAws,
+    skills: ["Claude", "Amazon Bedrock", "LLMs", "Generative AI"],
+    url: "https://verify.skilljar.com/c/m6xdkxq7yq5x",
+    icon: FaBrain
+  },
+  {
+    id: 14,
+    title: "Developing Front-End Apps with React",
+    platform: "Coursera (IBM)",
+    platformIcon: SiCoursera,
+    skills: ["React.js", "Frontend Development", "JavaScript"],
+    url: "https://www.coursera.org/account/accomplishments/verify/7C62B6UP16J6",
+    icon: FaReact
   }
 ];
