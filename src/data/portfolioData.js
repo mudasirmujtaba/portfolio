@@ -10,6 +10,7 @@ import heartDiseaseImg from '../assets/heart_disease.png';
 import nextWordImg from '../assets/next_word.png';
 import churnImg from '../assets/churn.png';
 import remoteSensingImg from '../assets/remote_sensing.png';
+import dailyJournalImg from '../assets/Daily Jounral APP.png';
 export const personalInfo = {
   name: "Mudasir Mujtaba",
   title: "Machine Learning & Full Stack Engineer",
@@ -172,7 +173,7 @@ export const projects = [
   {
     id: 9,
     title: "Daily Journal Application",
-    image: null,
+    image: dailyJournalImg,
     description: "Full-stack MERN journaling web application with secure JWT-based authentication, complete CRUD functionality, global state management with Context API, client-side routing with React Router, and containerized with Docker for consistent deployment.",
     tech: ["MongoDB", "Express.js", "React", "Node.js", "JWT", "Docker", "Formik"],
     github: "https://github.com/mudasirmujtaba/Daily-Journal-App",
