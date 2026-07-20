@@ -5,7 +5,10 @@
   --color-navy-dark: #020617;
   --color-accent-primary: #3b82f6;
   --color-accent-light: #38bdf8;
+  --color-accent-gold: #f2b230;
+  --color-accent-gold-light: #fbd374;
   --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
 @layer base {
@@ -49,5 +52,28 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-image: linear-gradient(to right, #38bdf8, #3b82f6);
+  }
+  .text-gradient-gold {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #fbd374, #f2b230);
+  }
+  .section-kicker {
+    color: var(--color-accent-gold);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .section-heading-line::after {
+    content: '';
+    display: block;
+    width: 56px;
+    height: 3px;
+    margin-top: 1.25rem;
+    border-radius: 999px;
+    background: linear-gradient(to right, var(--color-accent-primary), var(--color-accent-gold));
   }
 }

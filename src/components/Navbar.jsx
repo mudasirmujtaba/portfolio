@@ -17,9 +17,10 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'About', to: 'about' },
-    { name: 'Projects', to: 'projects' },
     { name: 'Skills', to: 'skills' },
     { name: 'Experience', to: 'experience' },
+    { name: 'Projects', to: 'projects' },
+    { name: 'Publications', to: 'publications' },
     { name: 'Certifications', to: 'certifications' },
     { name: 'Contact', to: 'contact' },
   ];
@@ -43,7 +44,7 @@ const Navbar = () => {
         </motion.div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-8 items-center">
+        <nav className="hidden lg:flex gap-5 xl:gap-7 items-center">
           {navLinks.map((link, index) => (
             <motion.div
               key={link.name}
@@ -56,7 +57,7 @@ const Navbar = () => {
                 smooth={true}
                 duration={500}
                 offset={-80}
-                className="text-slate-300 hover:text-accent-light cursor-pointer font-medium transition-colors"
+                className="text-slate-300 hover:text-accent-light cursor-pointer font-medium text-sm transition-colors whitespace-nowrap"
                 activeClass="text-accent-primary"
                 spy={true}
               >
@@ -69,14 +70,14 @@ const Navbar = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: navLinks.length * 0.1 }}
             href="#contact"
-            className="px-5 py-2 rounded-full bg-accent-primary/10 border border-accent-primary text-accent-light hover:bg-accent-primary hover:text-white transition-all shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]"
+            className="px-5 py-2 rounded-full bg-accent-primary/10 border border-accent-primary text-accent-light hover:bg-accent-primary hover:text-white transition-all shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] whitespace-nowrap text-sm"
           >
             Hire Me
           </motion.a>
         </nav>
 
         {/* Mobile Toggle */}
-        <div className="md:hidden flex items-center">
+        <div className="lg:hidden flex items-center">
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-slate-300 hover:text-white focus:outline-none"
@@ -97,7 +98,7 @@ const Navbar = () => {
         <motion.div 
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
-          className="md:hidden glass-nav border-t border-white/5"
+          className="lg:hidden glass-nav border-t border-white/5"
         >
           <div className="flex flex-col px-6 py-4 gap-4">
             {navLinks.map((link) => (

@@ -11,10 +11,11 @@ const Experience = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-16"
+          className="mb-16 section-heading-line"
         >
+          <p className="section-kicker mb-3">Where I've been</p>
           <h2 className="text-3xl md:text-4xl font-bold text-slate-200">
-            Experience & Education
+            Experience &amp; Education
           </h2>
         </motion.div>
 
@@ -29,8 +30,8 @@ const Experience = () => {
               className="mb-12 ml-8 relative"
             >
               {/* Timeline dot */}
-              <div className="absolute w-4 h-4 bg-accent-primary rounded-full -left-[41px] top-1.5 border-4 border-navy-dark shadow-[0_0_10px_rgba(59,130,246,0.8)]"></div>
-              
+              <div className="absolute w-4 h-4 bg-accent-gold rounded-full -left-[41px] top-1.5 border-4 border-navy-dark shadow-[0_0_10px_rgba(242,178,48,0.7)]"></div>
+
               <div className="glass-card p-6 md:p-8 hover:border-accent-primary/30 group">
                 <h3 className="text-2xl font-bold text-slate-200 mb-1">
                   {exp.role}

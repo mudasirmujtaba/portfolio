@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { personalInfo } from '../data/portfolioData';
 
 const Contact = () => {
   const formRef = useRef();
@@ -50,10 +52,23 @@ const Contact = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-12"
         >
+          <p className="section-kicker mb-3">Let's connect</p>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-200 mb-6">Get In Touch</h2>
           <p className="text-slate-400 max-w-xl mx-auto leading-relaxed">
-            I'm currently looking for new opportunities. Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!
+            I'm currently open to new freelance engagements and full-time opportunities in AI engineering and full-stack development. Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!
           </p>
+
+          <div className="flex flex-wrap justify-center gap-3 mt-8">
+            <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700 text-slate-300 text-sm hover:border-accent-primary/50 hover:text-accent-light transition-colors">
+              <FaEnvelope className="text-accent-light" size={14} /> {personalInfo.email}
+            </a>
+            <a href={`tel:${personalInfo.phone.replace(/[^+\d]/g, '')}`} className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700 text-slate-300 text-sm hover:border-accent-primary/50 hover:text-accent-light transition-colors">
+              <FaPhoneAlt className="text-accent-light" size={13} /> {personalInfo.phone}
+            </a>
+            <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700 text-slate-300 text-sm">
+              <FaMapMarkerAlt className="text-accent-gold" size={14} /> {personalInfo.location}
+            </span>
+          </div>
         </motion.div>
 
         <motion.div

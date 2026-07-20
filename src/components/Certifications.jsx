@@ -13,8 +13,9 @@ const Certifications = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-12 text-center md:text-left"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-200 mb-4 tracking-tight">Certifications</h2>
-          <div className="w-20 h-1 bg-accent-primary mx-auto md:mx-0 rounded-full"></div>
+          <p className="section-kicker mb-3">Always learning</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-200 tracking-tight">Certifications</h2>
+          <div className="w-14 h-1 bg-gradient-to-r from-accent-primary to-accent-gold mx-auto md:mx-0 rounded-full mt-5"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -50,10 +51,13 @@ const Certifications = () => {
                   {cert.title}
                 </h3>
                 
-                <p className="text-slate-400 text-sm mb-4 font-mono flex items-center gap-2">
+                <p className="text-slate-400 text-sm mb-1 font-mono flex items-center gap-2">
                   <PlatformIcon className="text-lg" />
                   {cert.platform}
                 </p>
+                {cert.date && (
+                  <p className="text-slate-500 text-xs font-mono mb-4">{cert.date}</p>
+                )}
 
                 {/* Skills */}
                 <div className="mt-auto flex flex-wrap gap-2 pt-4 border-t border-slate-700/50">

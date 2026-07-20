@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { FaLinkedin, FaDownload, FaGithub, FaArrowRight } from 'react-icons/fa';
+import { FaLinkedin, FaDownload, FaGithub, FaArrowRight, FaAward } from 'react-icons/fa';
 import { personalInfo } from '../data/portfolioData';
-import profilePic from '../assets/profile.png';
+import profilePic from '../assets/Profile.png';
 
 const Hero = () => {
   return (
@@ -11,23 +11,29 @@ const Hero = () => {
       {/* Background Animated Elements */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-primary/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-accent-light/10 rounded-full mix-blend-screen filter blur-[80px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-accent-gold/10 rounded-full mix-blend-screen filter blur-[90px] animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
       <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
-        
+
         {/* Left Side: Text */}
         <div className="flex-1 text-center md:text-left">
-          <motion.p 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-accent-light font-mono text-lg mb-4"
+            className="flex items-center gap-2 justify-center md:justify-start mb-4"
           >
-            Welcome to my portfolio,
-          </motion.p>
-          
-          <motion.h1 
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <p className="text-slate-400 font-mono text-sm tracking-wide">
+              Available for freelance & full-time roles &middot; {personalInfo.location}
+            </p>
+          </motion.div>
+
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
@@ -35,25 +41,35 @@ const Hero = () => {
           >
             {personalInfo.name}
           </motion.h1>
-          
-          <motion.h2 
+
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-3xl md:text-4xl font-bold text-slate-400 mb-6"
+            className="text-2xl md:text-3xl font-bold text-gradient mb-6"
           >
-            I build intelligent systems.
+            {personalInfo.title}
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="text-slate-400 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed mx-auto md:mx-0"
+            className="text-slate-400 text-lg md:text-xl max-w-2xl mb-6 leading-relaxed mx-auto md:mx-0"
           >
-            I am a <span className="text-accent-light">{personalInfo.title}</span> specializing in integrating sophisticated AI models—such as LLMs and Computer Vision—into robust modern web and mobile platforms.
+            {personalInfo.tagline} Specializing in <span className="text-accent-light">LLMs, RAG & Agentic AI</span>, with full-stack delivery across the <span className="text-accent-light">MERN and PERN</span> stacks.
           </motion.p>
-          
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
+            className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-accent-gold/10 border border-accent-gold/30 text-accent-gold-light text-sm font-medium"
+          >
+            <FaAward size={14} />
+            First Author &middot; IEEE ICET 2026 (Under Review)
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -103,14 +119,33 @@ const Hero = () => {
           className="flex-1 flex justify-center md:justify-end"
         >
           <div className="relative group w-64 h-64 md:w-80 md:h-80">
-            <div className="absolute inset-0 rounded-2xl overflow-hidden glass-card z-10 flex items-center justify-center border-2 border-slate-700 group-hover:border-accent-light transition-colors duration-500 shadow-2xl">
-              <img 
-                src={profilePic} 
-                alt="Mudasir Mujtaba" 
+            {/* Gradient ring */}
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-accent-gold via-accent-primary to-accent-light opacity-60 group-hover:opacity-90 blur-[2px] transition-opacity duration-500"></div>
+
+            <div className="absolute inset-0 rounded-2xl overflow-hidden glass-card z-10 flex items-center justify-center border border-navy-dark shadow-2xl">
+              <img
+                src={profilePic}
+                alt="Mudasir Mujtaba"
                 className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-accent-primary/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
+
+            {/* Floating badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+              className="absolute -bottom-5 -left-5 md:-bottom-6 md:-left-8 z-20 glass-card px-4 py-3 flex items-center gap-3 shadow-xl border-accent-gold/30"
+            >
+              <div className="w-9 h-9 rounded-lg bg-accent-gold/15 border border-accent-gold/30 flex items-center justify-center text-accent-gold">
+                <FaAward size={16} />
+              </div>
+              <div className="leading-tight">
+                <p className="text-white text-sm font-semibold">AI &amp; Full-Stack</p>
+                <p className="text-slate-400 text-xs">Engineer</p>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
 
