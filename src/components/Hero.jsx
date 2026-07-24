@@ -29,7 +29,7 @@ const Hero = () => {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
             <p className="text-slate-400 font-mono text-sm tracking-wide">
-              Available for freelance & full-time roles &middot; {personalInfo.location}
+              {personalInfo.location}
             </p>
           </motion.div>
 
