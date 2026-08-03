@@ -127,13 +127,20 @@ export const experience = [
   },
   {
     id: 3,
+    role: "Full-Stack Developer",
+    company: "Soft Visionist (Remote)",
+    duration: "Aug 2025 - Apr 2026",
+    description: "Built and maintained web and mobile applications using React.js, Node.js, Express.js, MongoDB, PostgreSQL, Python, and FastAPI, delivering features end to end from API design to user interface. Integrated AI capabilities into production applications, including computer vision features and generative AI chatbot systems powered by LLMs. Collaborated remotely with the team on architecture decisions, code reviews, and delivery timelines."
+  },
+  {
+    id: 4,
     role: "AI Development and Automation Intern",
     company: "Techrypt (Karachi, Pakistan)",
     duration: "Jun 2025 - Aug 2025",
     description: "Developed AI chatbots and automation workflows using LLMs and n8n for business process optimization. Contributed to CRM development through backend and full-stack feature implementation."
   },
   {
-    id: 4,
+    id: 5,
     role: "Freelance NLP Annotation Lead",
     company: "CrowdGen (Remote)",
     duration: "Aug 2023 - Oct 2023",
