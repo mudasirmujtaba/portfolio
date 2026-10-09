@@ -120,10 +120,10 @@ export const experience = [
   },
   {
     id: 2,
-    role: "Freelance AI/ML Engineer & Full-Stack Developer",
-    company: "Fiverr (Remote)",
-    duration: "May 2024 - Present",
-    description: "Delivered AI solutions involving LLMs, RAG pipelines, NLP, Computer Vision, and intelligent automation for international clients. Developed and deployed production-grade AI APIs and full-stack web applications using FastAPI, Node.js, and Docker."
+    role: "Software Developer",
+    company: "LoopVerse Digital (Karachi, Pakistan)",
+    duration: "Oct 2026 - Present",
+    description: "Building full-stack applications and agentic AI applications, working across the stack from backend APIs and data layers to user-facing interfaces, and designing LLM-powered agents that automate multi-step workflows."
   },
   {
     id: 3,
@@ -138,13 +138,6 @@ export const experience = [
     company: "Techrypt (Karachi, Pakistan)",
     duration: "Jun 2025 - Aug 2025",
     description: "Developed AI chatbots and automation workflows using LLMs and n8n for business process optimization. Contributed to CRM development through backend and full-stack feature implementation."
-  },
-  {
-    id: 5,
-    role: "Freelance NLP Annotation Lead",
-    company: "CrowdGen (Remote)",
-    duration: "Aug 2023 - Oct 2023",
-    description: "Worked on large-scale NLP projects with multilingual datasets (Sindhi, Urdu, English) supporting AI model training and evaluation. Led and coordinated data annotation workflows with distributed global teams to meet quality benchmarks."
   }
 ];
 

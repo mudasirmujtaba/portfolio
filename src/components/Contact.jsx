@@ -55,7 +55,7 @@ const Contact = () => {
           <p className="section-kicker mb-3">Let's connect</p>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-200 mb-6">Get In Touch</h2>
           <p className="text-slate-400 max-w-xl mx-auto leading-relaxed">
-            I'm currently open to new freelance engagements and full-time opportunities in AI engineering and full-stack development. Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!
+            Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 mt-8">

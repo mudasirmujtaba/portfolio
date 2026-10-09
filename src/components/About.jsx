@@ -66,7 +66,7 @@ const About = () => {
             <motion.div variants={itemVariants} className="flex gap-4 items-start">
               <span className="text-accent-gold mt-1">▹</span>
               <p>
-                Currently working as a <strong className="text-accent-light font-medium">freelance AI/ML and full-stack developer</strong>, I help global clients ship production-grade AI APIs and web platforms using FastAPI, Node.js, and Docker.
+                Currently working as a <strong className="text-accent-light font-medium">Software Developer at LoopVerse Digital</strong>, I build full-stack applications and agentic AI applications.
               </p>
             </motion.div>
 
