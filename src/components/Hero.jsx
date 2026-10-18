@@ -1,166 +1,128 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-scroll';
-import { FaLinkedin, FaDownload, FaGithub, FaArrowRight, FaAward } from 'react-icons/fa';
-import { personalInfo } from '../data/portfolioData';
-import profilePic from '../assets/Profile.png';
+import { FiArrowRight, FiMapPin } from 'react-icons/fi';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { personalInfo, experience } from '../data/portfolioData';
+import { IconLink } from './ui';
+import profile400 from '../assets/profile-400.webp';
+import profile800 from '../assets/profile-800.webp';
+
+const EASE = [0.21, 0.47, 0.32, 0.98];
+
+const container = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
+};
 
 const Hero = () => {
+  const current = experience[0];
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-      {/* Background Animated Elements */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-primary/20 rounded-full mix-blend-screen filter blur-[100px] animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-accent-gold/10 rounded-full mix-blend-screen filter blur-[90px] animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div>
+    <section
+      id="hero"
+      aria-labelledby="hero-title"
+      className="relative isolate overflow-hidden pt-24 pb-12 md:flex md:min-h-[100svh] md:items-center md:pt-16 md:pb-0"
+    >
+      <div className="bg-grid bg-grid-hero absolute inset-0 -z-10 opacity-50" aria-hidden="true" />
 
-      <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
-
-        {/* Left Side: Text */}
-        <div className="flex-1 text-center md:text-left">
+      <div className="container-page">
+        <div className="grid items-center gap-10 md:grid-cols-12 md:gap-8 lg:gap-12">
+          {/* Photo: first on mobile, right column from md up */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex items-center gap-2 justify-center md:justify-start mb-4"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
+            className="md:order-last md:col-span-5 md:flex md:justify-center lg:justify-end"
           >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            <p className="text-slate-400 font-mono text-sm tracking-wide">
-              {personalInfo.location}
-            </p>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight"
-          >
-            {personalInfo.name}
-          </motion.h1>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-2xl md:text-3xl font-bold text-gradient mb-6"
-          >
-            {personalInfo.title}
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="text-slate-400 text-lg md:text-xl max-w-2xl mb-6 leading-relaxed mx-auto md:mx-0"
-          >
-            {personalInfo.tagline} Specializing in <span className="text-accent-light">LLMs, RAG & Agentic AI</span>, with full-stack delivery across the <span className="text-accent-light">MERN and PERN</span> stacks.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-full bg-accent-gold/10 border border-accent-gold/30 text-accent-gold-light text-sm font-medium"
-          >
-            <FaAward size={14} />
-            First Author &middot; IEEE ICET 2026 (Under Review)
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-wrap gap-3 justify-center md:justify-start"
-          >
-            <Link
-              to="projects"
-              smooth={true}
-              duration={800}
-              offset={-80}
-              className="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 bg-accent-primary text-white rounded-full text-sm font-semibold hover:bg-blue-600 transition-all shadow-[0_0_18px_rgba(59,130,246,0.35)] hover:shadow-[0_0_26px_rgba(59,130,246,0.55)] hover:-translate-y-0.5"
-            >
-              My Work <FaArrowRight size={12} />
-            </Link>
-            <a
-              href={personalInfo.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-600 text-slate-300 rounded-full text-sm font-semibold hover:border-accent-light hover:text-accent-light hover:bg-accent-light/5 transition-all hover:-translate-y-0.5"
-            >
-              <FaGithub size={15} /> GitHub
-            </a>
-            <a
-              href={personalInfo.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-600 text-slate-300 rounded-full text-sm font-semibold hover:border-[#0A66C2] hover:text-[#0A66C2] hover:bg-[#0A66C2]/5 transition-all hover:-translate-y-0.5"
-            >
-              <FaLinkedin size={15} /> LinkedIn
-            </a>
-            <a
-              href="/Resume.pdf"
-              download="Mudasir_Mujtaba_Resume.pdf"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-slate-600 text-slate-300 rounded-full text-sm font-semibold hover:border-emerald-400 hover:text-emerald-400 hover:bg-emerald-400/5 transition-all hover:-translate-y-0.5"
-            >
-              <FaDownload size={13} /> Resume
-            </a>
-          </motion.div>
-        </div>
-
-        {/* Right Side: Photo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="flex-1 flex justify-center md:justify-end"
-        >
-          <div className="relative group w-64 h-64 md:w-80 md:h-80">
-            {/* Gradient ring */}
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-accent-gold via-accent-primary to-accent-light opacity-60 group-hover:opacity-90 blur-[2px] transition-opacity duration-500"></div>
-
-            <div className="absolute inset-0 rounded-2xl overflow-hidden glass-card z-10 flex items-center justify-center border border-navy-dark shadow-2xl">
-              <img
-                src={profilePic}
-                alt="Mudasir Mujtaba"
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            <div className="relative w-36 sm:w-44 md:w-60 lg:w-72 xl:w-80">
+              <div
+                className="absolute -inset-[12%] -z-10 rounded-full blur-2xl"
+                style={{ background: 'radial-gradient(closest-side, color-mix(in oklab, var(--accent) 22%, transparent), transparent)' }}
+                aria-hidden="true"
               />
-              <div className="absolute inset-0 bg-accent-primary/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </div>
-
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
-              className="absolute -bottom-5 -left-5 md:-bottom-6 md:-left-8 z-20 glass-card px-4 py-3 flex items-center gap-3 shadow-xl border-accent-gold/30"
-            >
-              <div className="w-9 h-9 rounded-lg bg-accent-gold/15 border border-accent-gold/30 flex items-center justify-center text-accent-gold">
-                <FaAward size={16} />
+              <div className="relative aspect-square overflow-hidden rounded-full bg-surface-2 ring-1 ring-accent/50 ring-offset-4 ring-offset-bg md:ring-offset-[6px]">
+                {/* Scale crops out the yellow ring baked into the source image */}
+                <img
+                  src={profile800}
+                  srcSet={`${profile400} 400w, ${profile800} 800w`}
+                  sizes="(min-width: 1280px) 320px, (min-width: 1024px) 288px, (min-width: 768px) 240px, 176px"
+                  width="800"
+                  height="800"
+                  alt={`Portrait of ${personalInfo.name}`}
+                  fetchPriority="high"
+                  decoding="async"
+                  className="h-full w-full scale-[1.08] object-cover saturate-[0.9]"
+                />
+                {/* Soft inner vignette blends the saturated backdrop into the page surface */}
+                <div
+                  className="pointer-events-none absolute inset-0 rounded-full"
+                  style={{ background: 'radial-gradient(circle, transparent 62%, color-mix(in oklab, var(--bg) 35%, transparent) 100%)' }}
+                  aria-hidden="true"
+                />
               </div>
-              <div className="leading-tight">
-                <p className="text-white text-sm font-semibold">AI &amp; Full-Stack</p>
-                <p className="text-slate-400 text-xs">Engineer</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="visible"
+            className="md:col-span-7"
+          >
+            <motion.h1
+              variants={item}
+              id="hero-title"
+              className="text-[2.5rem] leading-[1.05] font-semibold tracking-tight sm:text-5xl lg:text-6xl"
+            >
+              {personalInfo.name}
+            </motion.h1>
+
+            <motion.p
+              variants={item}
+              className="mt-3 text-lg font-medium text-fg/85 sm:text-xl lg:text-2xl text-balance"
+            >
+              {current.role}
+              <span className="hidden text-subtle xl:inline" aria-hidden="true"> · </span>
+              <span className="block text-accent xl:inline">Full-Stack &amp; Agentic AI</span>
+            </motion.p>
+
+            <motion.p
+              variants={item}
+              className="mt-5 max-w-[60ch] text-base leading-relaxed text-muted sm:text-[1.0625rem] text-pretty"
+            >
+              I build production web platforms and LLM-powered systems, from RAG pipelines and
+              autonomous agents to the APIs and interfaces around them.
+            </motion.p>
+
+            <motion.div variants={item} className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <div className="flex flex-wrap gap-3">
+                <a href="#projects" className="btn btn-primary h-11 px-5">
+                  View my work <FiArrowRight size={15} aria-hidden="true" />
+                </a>
+                <a href="#contact" className="btn btn-secondary h-11 px-5">
+                  Get in touch
+                </a>
+              </div>
+              <div className="flex gap-2">
+                <IconLink href={personalInfo.github} label="GitHub">
+                  <FaGithub size={18} />
+                </IconLink>
+                <IconLink href={personalInfo.linkedin} label="LinkedIn">
+                  <FaLinkedin size={18} />
+                </IconLink>
               </div>
             </motion.div>
-          </div>
-        </motion.div>
 
+            <motion.p variants={item} className="mt-6 flex items-center gap-1.5 text-sm text-subtle">
+              <FiMapPin size={14} aria-hidden="true" /> {personalInfo.location}
+            </motion.p>
+          </motion.div>
+        </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-      >
-        <span className="text-slate-500 text-sm tracking-widest mb-2 font-mono">SCROLL</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-slate-500 to-transparent"></div>
-      </motion.div>
     </section>
   );
 };

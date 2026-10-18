@@ -1,109 +1,54 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaGraduationCap } from 'react-icons/fa';
+import { FiBookOpen } from 'react-icons/fi';
+import { education } from '../data/portfolioData';
+import { Section, SectionHeader, Reveal } from './ui';
 
-const About = () => {
-  const listVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+const focusAreas = ['LLMs & RAG', 'Agentic AI', 'Full-Stack Web', 'Computer Vision', 'NLP', 'MLOps'];
 
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
+const About = () => (
+  <Section id="about">
+    <SectionHeader index="01" title="About" />
 
-  return (
-    <section id="about" className="py-12 relative">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-12 section-heading-line"
-        >
-          <p className="section-kicker mb-3">Get to know me</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-200">
-            About Me
-          </h2>
-        </motion.div>
+    <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:gap-14">
+      <Reveal className="space-y-5 text-base md:text-lg leading-relaxed">
+        <p>
+          I'm a <span className="text-fg font-medium">Software Engineer at LoopVerse Digital</span> in
+          Karachi, where I build full-stack applications and agentic AI systems. I care about shipping
+          software that's reliable in production — clean APIs, thoughtful interfaces, and AI features
+          that are grounded, measurable, and safe.
+        </p>
+        <p>
+          My work spans <span className="text-fg font-medium">LLMs, Retrieval-Augmented Generation,
+          agentic workflows, NLP and computer vision</span>, paired with end-to-end web development across
+          the MERN and PERN stacks with FastAPI, Docker and PostgreSQL.
+        </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-          <motion.div
-            variants={listVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-slate-400 leading-relaxed space-y-6 text-lg lg:col-span-2"
-          >
-            <motion.div variants={itemVariants} className="flex gap-4 items-start">
-              <span className="text-accent-gold mt-1">▹</span>
-              <p>
-                I am an <strong className="text-accent-light font-medium">AI Engineer and Full-Stack Software Developer</strong>, and a Computer Science graduate of <strong className="text-white font-medium">Sukkur IBA University (2022-2026)</strong>, experienced in building and deploying production-grade AI systems and scalable web applications.
-              </p>
-            </motion.div>
+        <ul className="flex flex-wrap gap-2 pt-2" aria-label="Focus areas">
+          {focusAreas.map((f) => (
+            <li key={f} className="tag">{f}</li>
+          ))}
+        </ul>
+      </Reveal>
 
-            <motion.div variants={itemVariants} className="flex gap-4 items-start">
-              <span className="text-accent-gold mt-1">▹</span>
-              <p>
-                My expertise spans <strong className="text-white font-medium">LLMs, Retrieval-Augmented Generation (RAG), Agentic AI, NLP, and Computer Vision</strong>, paired with full-stack development across the <strong className="text-accent-light font-medium">MERN and PERN</strong> stacks.
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="flex gap-4 items-start">
-              <span className="text-accent-gold mt-1">▹</span>
-              <p>
-                I'm the <strong className="text-white font-medium">first author of a research paper</strong> on Retrieval-Augmented legal AI submitted to <strong className="text-accent-light font-medium">IEEE ICET 2026</strong>, built on a hybrid RAG pipeline over nearly 30,000 Pakistani legal documents.
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="flex gap-4 items-start">
-              <span className="text-accent-gold mt-1">▹</span>
-              <p>
-                Currently working as a <strong className="text-accent-light font-medium">Software Developer at LoopVerse Digital</strong>, I build full-stack applications and agentic AI applications.
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="flex gap-4 items-start">
-              <span className="text-accent-gold mt-1">▹</span>
-              <p>
-                My focus stays on delivering <strong className="text-accent-light font-medium">secure, scalable, and thoughtfully designed solutions</strong> that drive real value and performance.
-              </p>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="glass-card p-6"
-          >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-accent-primary/10 border border-accent-primary/30 flex items-center justify-center text-accent-light flex-shrink-0">
-                <FaGraduationCap size={18} />
-              </div>
-              <h3 className="text-white font-semibold">Education</h3>
-            </div>
-            <p className="text-slate-200 font-medium mb-1">BS Computer Science</p>
-            <p className="text-slate-400 text-sm mb-1">Sukkur IBA University, Sukkur</p>
-            <p className="text-slate-500 text-sm font-mono mb-4">2022 - 2026 &middot; CGPA 3.5 / 4.0</p>
-            <div className="pt-4 border-t border-slate-700/50">
-              <p className="text-slate-400 text-sm leading-relaxed">
-                <span className="text-accent-light font-medium">Final Year Project:</span> LexiBot, an AI-Powered Legal Assistant for the Pakistani Legal Domain.
-              </p>
-            </div>
-          </motion.div>
+      <Reveal delay={0.1}>
+        <div className="card p-6">
+          <div className="flex items-center gap-2 text-sm font-medium text-fg">
+            <FiBookOpen size={16} className="text-accent" />
+            Education
+          </div>
+          <h3 className="mt-4 text-lg font-semibold">{education.degree}</h3>
+          <p className="mt-1 text-sm">{education.school}</p>
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-subtle">
+            <span>{education.duration}</span>
+            <span>CGPA {education.cgpa}</span>
+          </div>
+          <div className="mt-5 border-t border-line pt-5 text-sm leading-relaxed">
+            <p className="text-xs font-medium uppercase tracking-wider text-subtle mb-2">Final year project</p>
+            <p>{education.project}</p>
+          </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </Reveal>
+    </div>
+  </Section>
+);
 
 export default About;

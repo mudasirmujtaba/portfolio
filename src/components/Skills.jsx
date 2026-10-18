@@ -1,78 +1,77 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { FiCode, FiCpu, FiLayers, FiMonitor, FiDatabase, FiTool } from 'react-icons/fi';
 import { skills } from '../data/portfolioData';
+import { Section, SectionHeader, Reveal } from './ui';
 
-const Skills = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+const categoryMeta = {
+  'Languages': { icon: FiCode },
+  'AI & Machine Learning': { icon: FiCpu, wide: true },
+  'AI Frameworks': { icon: FiLayers },
+  'Full-Stack Development': { icon: FiMonitor, wide: true },
+  'Databases': { icon: FiDatabase },
+  'DevOps & Tools': { icon: FiTool, wide: true },
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
+const brandColor = (color) => {
+  if (color === 'accent') return 'var(--accent)';
+  return color || 'var(--fg)';
+};
 
+const SkillTile = ({ skill }) => {
+  const Icon = skill.icon;
   return (
-    <section id="skills" className="py-12 relative">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-16 section-heading-line"
-        >
-          <p className="section-kicker mb-3">What I work with</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-200">
-            Technical Skills
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((category, idx) => (
-            <motion.div
-              key={idx}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-              className="glass-card p-6 md:p-7"
-            >
-              <h3 className="text-lg font-semibold text-white mb-5 pb-4 border-b border-slate-700 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
-                {category.category}
-              </h3>
-              <div className="flex flex-wrap gap-2.5">
-                {category.items.map((skill, sIdx) => {
-                  const Icon = skill.icon;
-                  return (
-                    <motion.div
-                      key={sIdx}
-                      variants={itemVariants}
-                      className="flex items-center gap-2 bg-slate-800/80 px-3.5 py-1.5 rounded-full border border-slate-700 text-sm text-slate-300 hover:text-accent-light hover:border-accent-primary/50 transition-colors cursor-default"
-                    >
-                      {Icon && <Icon className="text-base" />}
-                      <span>{skill.name}</span>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <li className="skill-tile flex items-center gap-2.5 rounded-lg border border-line bg-surface-2/60 p-2 pr-3" style={{ '--brand': brandColor(skill.color) }}>
+      <span className="skill-tile-icon flex h-8 w-8 shrink-0 items-center justify-center rounded-md">
+        {Icon && <Icon size={17} aria-hidden="true" />}
+      </span>
+      <span className="text-[0.8125rem] font-medium leading-tight text-fg/90">{skill.name}</span>
+    </li>
   );
 };
+
+const Skills = () => (
+  <Section id="skills">
+    <SectionHeader
+      index="04"
+      title="Skills"
+      description="The languages, frameworks and tools I use to take products from idea to production."
+    />
+
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {skills.map((group, idx) => {
+        const meta = categoryMeta[group.category] || {};
+        const Icon = meta.icon || FiCode;
+        return (
+          <Reveal
+            key={group.category}
+            delay={(idx % 2) * 0.06}
+            className={`h-full ${meta.wide ? 'lg:col-span-2' : ''}`}
+          >
+            <div className="card group relative h-full overflow-hidden p-5">
+              <div
+                className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
+                style={{ background: 'color-mix(in oklab, var(--accent) 18%, transparent)' }}
+                aria-hidden="true"
+              />
+              <div className="relative flex items-center gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-surface-2 text-accent">
+                  <Icon size={16} aria-hidden="true" />
+                </span>
+                <h3 className="flex-1 font-semibold">{group.category}</h3>
+                <span className="font-mono text-xs text-subtle" aria-label={`${group.items.length} skills`}>
+                  {String(group.items.length).padStart(2, '0')}
+                </span>
+              </div>
+              <ul className="relative mt-4 grid grid-cols-[repeat(auto-fill,minmax(8.5rem,1fr))] gap-2">
+                {group.items.map((skill) => (
+                  <SkillTile key={skill.name} skill={skill} />
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        );
+      })}
+    </div>
+  </Section>
+);
 
 export default Skills;

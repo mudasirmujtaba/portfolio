@@ -1,122 +1,166 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiSun, FiMoon, FiMenu, FiX, FiDownload } from 'react-icons/fi';
 import { personalInfo } from '../data/portfolioData';
+
+const navLinks = [
+  { name: 'About', to: 'about' },
+  { name: 'Experience', to: 'experience' },
+  { name: 'Projects', to: 'projects' },
+  { name: 'Skills', to: 'skills' },
+  { name: 'Contact', to: 'contact' },
+];
+
+const getInitialTheme = () => {
+  const explicit = document.documentElement.getAttribute('data-theme');
+  if (explicit) return explicit;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState('');
+  const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'About', to: 'about' },
-    { name: 'Skills', to: 'skills' },
-    { name: 'Experience', to: 'experience' },
-    { name: 'Projects', to: 'projects' },
-    { name: 'Publications', to: 'publications' },
-    { name: 'Certifications', to: 'certifications' },
-    { name: 'Contact', to: 'contact' },
-  ];
+  useEffect(() => {
+    const sections = navLinks
+      .map((l) => document.getElementById(l.to))
+      .filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px' }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      // storage unavailable; theme still applies for this session
+    }
+    setTheme(next);
+  };
+
+  const [first, ...rest] = personalInfo.name.split(' ');
 
   return (
-    <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-nav py-4 shadow-lg' : 'bg-transparent py-6'
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-200 border-b ${
+        isScrolled || menuOpen
+          ? 'bg-bg/80 backdrop-blur-md border-line'
+          : 'bg-transparent border-transparent'
       }`}
     >
-      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl font-bold text-white tracking-tighter cursor-pointer"
-        >
-          <Link to="hero" smooth={true} duration={500}>
-            {personalInfo.name.split(' ')[0]}<span className="text-accent-primary">.</span>
-          </Link>
-        </motion.div>
+      <div className="container-page flex h-16 items-center justify-between">
+        <a href="#hero" className="group flex items-center gap-2.5 text-fg" aria-label={`${personalInfo.name}, back to top`}>
+          <span className="flex h-8 w-8 items-center justify-center rounded-md border border-line bg-surface font-mono text-[11px] font-medium tracking-wide text-muted transition-colors group-hover:border-accent/50 group-hover:text-accent">
+            {first.charAt(0)}{rest.join(' ').charAt(0)}
+          </span>
+          <span className="hidden text-sm font-medium sm:inline">{personalInfo.name}</span>
+        </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex gap-5 xl:gap-7 items-center">
-          {navLinks.map((link, index) => (
-            <motion.div
-              key={link.name}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+        <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
+          {navLinks.map((link) => (
+            <a
+              key={link.to}
+              href={`#${link.to}`}
+              aria-current={active === link.to ? 'true' : undefined}
+              className={`relative px-3 py-2 text-sm rounded-md transition-colors ${
+                active === link.to ? 'text-fg' : 'text-muted hover:text-fg'
+              }`}
             >
-              <Link
-                to={link.to}
-                smooth={true}
-                duration={500}
-                offset={-80}
-                className="text-slate-300 hover:text-accent-light cursor-pointer font-medium text-sm transition-colors whitespace-nowrap"
-                activeClass="text-accent-primary"
-                spy={true}
-              >
-                {link.name}
-              </Link>
-            </motion.div>
+              {link.name}
+              {active === link.to && (
+                <motion.span
+                  layoutId="nav-active"
+                  className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-accent"
+                  transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                />
+              )}
+            </a>
           ))}
-          <motion.a
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: navLinks.length * 0.1 }}
-            href="#contact"
-            className="px-5 py-2 rounded-full bg-accent-primary/10 border border-accent-primary text-accent-light hover:bg-accent-primary hover:text-white transition-all shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] whitespace-nowrap text-sm"
-          >
-            Hire Me
-          </motion.a>
         </nav>
 
-        {/* Mobile Toggle */}
-        <div className="lg:hidden flex items-center">
-          <button 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-slate-300 hover:text-white focus:outline-none"
+        <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="icon-btn"
+            aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            {theme === 'dark' ? <FiSun size={18} /> : <FiMoon size={18} />}
+          </button>
+          <a
+            href="/Resume.pdf"
+            download="Mudasir_Mujtaba_Resume.pdf"
+            className="btn btn-secondary hidden sm:inline-flex ml-1 h-9"
+          >
+            <FiDownload size={14} /> Resume
+          </a>
+          <button
+            type="button"
+            onClick={() => setMenuOpen((o) => !o)}
+            className="icon-btn lg:hidden"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          >
+            {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Nav Menu */}
-      {mobileMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          className="lg:hidden glass-nav border-t border-white/5"
-        >
-          <div className="flex flex-col px-6 py-4 gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.to}
-                smooth={true}
-                duration={500}
-                offset={-80}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-slate-300 hover:text-accent-light cursor-pointer text-lg py-2 border-b border-white/5"
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.nav
+            id="mobile-nav"
+            aria-label="Mobile"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden overflow-hidden border-t border-line bg-bg"
+          >
+            <div className="container-page flex flex-col py-3">
+              {navLinks.map((link) => (
+                <a
+                  key={link.to}
+                  href={`#${link.to}`}
+                  onClick={() => setMenuOpen(false)}
+                  className={`py-3 text-base border-b border-line last:border-0 ${
+                    active === link.to ? 'text-fg font-medium' : 'text-muted'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              ))}
+              <a
+                href="/Resume.pdf"
+                download="Mudasir_Mujtaba_Resume.pdf"
+                className="btn btn-secondary mt-4 sm:hidden"
               >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-        </motion.div>
-      )}
+                <FiDownload size={14} /> Download resume
+              </a>
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

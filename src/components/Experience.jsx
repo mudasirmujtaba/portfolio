@@ -1,57 +1,51 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import { experience } from '../data/portfolioData';
+import { Section, SectionHeader, Reveal } from './ui';
 
-const Experience = () => {
-  return (
-    <section id="experience" className="py-12 relative">
-      <div className="container mx-auto px-6 md:px-12 max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-16 section-heading-line"
-        >
-          <p className="section-kicker mb-3">Where I've been</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-200">
-            Experience &amp; Education
-          </h2>
-        </motion.div>
-
-        <div className="relative border-l-2 border-slate-700 ml-3 md:ml-0">
-          {experience.map((exp, idx) => (
-            <motion.div
-              key={exp.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.2, ease: "easeOut" }}
-              className="mb-12 ml-8 relative"
-            >
-              {/* Timeline dot */}
-              <div className="absolute w-4 h-4 bg-accent-gold rounded-full -left-[41px] top-1.5 border-4 border-navy-dark shadow-[0_0_10px_rgba(242,178,48,0.7)]"></div>
-
-              <div className="glass-card p-6 md:p-8 hover:border-accent-primary/30 group">
-                <h3 className="text-2xl font-bold text-slate-200 mb-1">
-                  {exp.role}
-                </h3>
-                <h4 className="text-lg text-accent-light mb-2 font-medium">
-                  {exp.company}
-                </h4>
-                <p className="text-sm font-mono text-slate-500 mb-4">
-                  {exp.duration}
-                </p>
-                <p className="text-slate-400 leading-relaxed">
-                  {exp.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+const splitCompany = (company) => {
+  const match = company.match(/^(.*?)\s*\((.*)\)$/);
+  return match ? { name: match[1], location: match[2] } : { name: company, location: '' };
 };
+
+const Experience = () => (
+  <Section id="experience">
+    <SectionHeader
+      index="02"
+      title="Experience"
+      description="Where I've worked and what I've built along the way."
+    />
+
+    <ol className="relative">
+      {experience.map((exp, idx) => {
+        const { name, location } = splitCompany(exp.company);
+        const isCurrent = /present/i.test(exp.duration);
+        return (
+          <Reveal
+            as="li"
+            key={exp.id}
+            delay={idx * 0.05}
+            className="grid gap-2 md:grid-cols-[11rem_1fr] md:gap-10 border-t border-line py-6 first:border-t-0 first:pt-0 last:pb-0"
+          >
+            <div className="font-mono text-xs text-subtle md:pt-1.5">{exp.duration}</div>
+            <div>
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                <h3 className="text-lg font-semibold">{exp.role}</h3>
+                {isCurrent && (
+                  <span className="rounded-full border border-success/30 bg-success/10 px-2 py-0.5 text-[11px] font-medium text-success">
+                    Current
+                  </span>
+                )}
+              </div>
+              <p className="mt-1 text-sm">
+                <span className="font-medium text-accent">{name}</span>
+                {location && <span className="text-subtle"> · {location}</span>}
+              </p>
+              <p className="mt-4 max-w-3xl leading-relaxed">{exp.description}</p>
+            </div>
+          </Reveal>
+        );
+      })}
+    </ol>
+  </Section>
+);
 
 export default Experience;

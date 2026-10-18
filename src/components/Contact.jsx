@@ -1,8 +1,13 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
-import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { FiMail, FiPhone, FiMapPin, FiCheckCircle, FiAlertCircle, FiSend } from 'react-icons/fi';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { personalInfo } from '../data/portfolioData';
+import { Section, SectionHeader, Reveal } from './ui';
+
+const inputClass =
+  'w-full rounded-lg border border-line bg-bg px-3.5 py-2.5 text-sm text-fg placeholder:text-subtle transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 disabled:opacity-50';
 
 const Contact = () => {
   const formRef = useRef();
@@ -42,130 +47,148 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const contactItems = [
+    { icon: FiMail, label: 'Email', value: personalInfo.email, href: `mailto:${personalInfo.email}` },
+    { icon: FiPhone, label: 'Phone', value: personalInfo.phone, href: `tel:${personalInfo.phone.replace(/[^+\d]/g, '')}` },
+    { icon: FiMapPin, label: 'Location', value: personalInfo.location },
+  ];
+
   return (
-    <section id="contact" className="py-12 relative">
-      <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-12"
-        >
-          <p className="section-kicker mb-3">Let's connect</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-200 mb-6">Get In Touch</h2>
-          <p className="text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!
+    <Section id="contact">
+      <SectionHeader index="06" title="Contact" />
+
+      <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-14">
+        <Reveal>
+          <h3 className="text-2xl md:text-3xl font-semibold leading-tight">
+            Let's build something together.
+          </h3>
+          <p className="mt-4 max-w-md leading-relaxed">
+            Have a question, a project idea, or just want to say hi? Send a message and I'll get back
+            to you as soon as I can.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3 mt-8">
-            <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700 text-slate-300 text-sm hover:border-accent-primary/50 hover:text-accent-light transition-colors">
-              <FaEnvelope className="text-accent-light" size={14} /> {personalInfo.email}
-            </a>
-            <a href={`tel:${personalInfo.phone.replace(/[^+\d]/g, '')}`} className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700 text-slate-300 text-sm hover:border-accent-primary/50 hover:text-accent-light transition-colors">
-              <FaPhoneAlt className="text-accent-light" size={13} /> {personalInfo.phone}
-            </a>
-            <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700 text-slate-300 text-sm">
-              <FaMapMarkerAlt className="text-accent-gold" size={14} /> {personalInfo.location}
-            </span>
-          </div>
-        </motion.div>
+          <ul className="mt-8 space-y-4">
+            {contactItems.map(({ icon: Icon, label, value, href }) => (
+              <li key={label} className="flex items-center gap-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-line bg-surface text-muted">
+                  <Icon size={17} aria-hidden="true" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block text-xs text-subtle">{label}</span>
+                  {href ? (
+                    <a href={href} className="link-underline break-all text-sm font-medium text-fg">{value}</a>
+                  ) : (
+                    <span className="text-sm font-medium text-fg">{value}</span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="glass-card max-w-2xl mx-auto p-8 text-left relative overflow-hidden"
-        >
-          <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="mt-8 flex gap-2">
+            <a href={personalInfo.github} target="_blank" rel="noreferrer" className="btn btn-secondary">
+              <FaGithub size={16} /> GitHub
+            </a>
+            <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="btn btn-secondary">
+              <FaLinkedin size={16} /> LinkedIn
+            </a>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <form ref={formRef} onSubmit={handleSubmit} className="card space-y-5 p-6 md:p-8">
+            <div className="grid gap-5 sm:grid-cols-2">
               <div>
-                <label htmlFor="user_name" className="block text-sm font-medium text-slate-400 mb-2">Name</label>
+                <label htmlFor="user_name" className="mb-1.5 block text-sm font-medium text-fg">Name</label>
                 <input
                   type="text"
                   id="user_name"
                   name="user_name"
                   required
+                  autoComplete="name"
+                  placeholder="Your name"
                   value={formData.user_name}
                   onChange={handleChange}
                   disabled={status === 'loading'}
-                  className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors disabled:opacity-50"
+                  className={inputClass}
                 />
               </div>
               <div>
-                <label htmlFor="user_email" className="block text-sm font-medium text-slate-400 mb-2">Email</label>
+                <label htmlFor="user_email" className="mb-1.5 block text-sm font-medium text-fg">Email</label>
                 <input
                   type="email"
                   id="user_email"
                   name="user_email"
                   required
+                  autoComplete="email"
+                  placeholder="you@company.com"
                   value={formData.user_email}
                   onChange={handleChange}
                   disabled={status === 'loading'}
-                  className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors disabled:opacity-50"
+                  className={inputClass}
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-2">Message</label>
+              <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-fg">Message</label>
               <textarea
                 id="message"
                 name="message"
                 required
                 rows="5"
+                placeholder="Tell me a little about what you have in mind…"
                 value={formData.message}
                 onChange={handleChange}
                 disabled={status === 'loading'}
-                className="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-slate-300 focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary transition-colors resize-none disabled:opacity-50"
+                className={`${inputClass} resize-none`}
               ></textarea>
             </div>
-            <div className="text-center relative">
-              <button
-                type="submit"
-                disabled={status === 'loading'}
-                className="px-8 py-3 bg-accent-primary/10 border border-accent-primary text-accent-light rounded-lg hover:bg-accent-primary hover:text-white transition-all w-full md:w-auto min-w-[160px] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed mx-auto"
-              >
-                {status === 'loading' ? (
-                  <>
-                    <span className="w-5 h-5 border-2 border-accent-light border-t-transparent rounded-full animate-spin"></span>
-                    Sending...
-                  </>
-                ) : (
-                  "Submit"
+
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="btn btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {status === 'loading' ? (
+                <>
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+                  Sending…
+                </>
+              ) : (
+                <>
+                  Send message <FiSend size={14} />
+                </>
+              )}
+            </button>
+
+            <div aria-live="polite">
+              <AnimatePresence>
+                {status === 'success' && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="flex items-center gap-2 rounded-lg border border-success/30 bg-success/10 px-4 py-3 text-sm text-success"
+                  >
+                    <FiCheckCircle size={16} /> Message sent — thanks! I'll be in touch soon.
+                  </motion.p>
                 )}
-              </button>
+                {status === 'error' && (
+                  <motion.p
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="flex items-center gap-2 rounded-lg border border-danger/30 bg-danger/10 px-4 py-3 text-sm text-danger"
+                  >
+                    <FiAlertCircle size={16} /> Something went wrong. Please email me directly instead.
+                  </motion.p>
+                )}
+              </AnimatePresence>
             </div>
           </form>
-
-          {/* Feedback Messages */}
-          <AnimatePresence>
-            {status === 'success' && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="mt-6 p-4 rounded-lg bg-green-500/10 border border-green-500/30 text-green-400 text-center flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                Message sent successfully ✅
-              </motion.div>
-            )}
-            {status === 'error' && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="mt-6 p-4 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 text-center flex items-center justify-center gap-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                Failed to send message ❌
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+        </Reveal>
       </div>
-    </section>
+    </Section>
   );
 };
 
