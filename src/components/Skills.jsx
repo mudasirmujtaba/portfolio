@@ -1,4 +1,4 @@
-import { FiCode, FiCpu, FiLayers, FiMonitor, FiDatabase, FiTool } from 'react-icons/fi';
+import { FiCode, FiCpu, FiLayers, FiMonitor, FiDatabase, FiTool, FiZap } from 'react-icons/fi';
 import { skills } from '../data/portfolioData';
 import { Section, SectionHeader, Reveal } from './ui';
 
@@ -8,7 +8,8 @@ const categoryMeta = {
   'AI Frameworks': { icon: FiLayers },
   'Full-Stack Development': { icon: FiMonitor, wide: true },
   'Databases': { icon: FiDatabase },
-  'DevOps & Tools': { icon: FiTool, wide: true },
+  'Automation & Integrations': { icon: FiZap, wide: true },
+  'DevOps & Tools': { icon: FiTool, full: true },
 };
 
 const brandColor = (color) => {
@@ -44,7 +45,7 @@ const Skills = () => (
           <Reveal
             key={group.category}
             delay={(idx % 2) * 0.06}
-            className={`h-full ${meta.wide ? 'lg:col-span-2' : ''}`}
+            className={`h-full ${meta.wide ? 'lg:col-span-2' : ''} ${meta.full ? 'md:col-span-2 lg:col-span-3' : ''}`}
           >
             <div className="card group relative h-full overflow-hidden p-5">
               <div

@@ -27,7 +27,12 @@ const Hero = () => {
       aria-labelledby="hero-title"
       className="relative isolate overflow-hidden pt-24 pb-12 md:flex md:min-h-[100svh] md:items-center md:pt-16 md:pb-0"
     >
-      <div className="bg-grid bg-grid-hero absolute inset-0 -z-10 opacity-50" aria-hidden="true" />
+      <div
+        className="absolute inset-0 -z-10"
+        style={{ background: 'radial-gradient(60% 55% at 72% 45%, color-mix(in oklab, var(--accent) var(--hero-wash), transparent), transparent 70%)' }}
+        aria-hidden="true"
+      />
+      <div className="bg-grid bg-grid-hero absolute inset-0 -z-10 opacity-60" aria-hidden="true" />
 
       <div className="container-page">
         <div className="grid items-center gap-10 md:grid-cols-12 md:gap-8 lg:gap-12">
@@ -87,15 +92,15 @@ const Hero = () => {
             >
               {current.role}
               <span className="hidden text-subtle xl:inline" aria-hidden="true"> · </span>
-              <span className="block text-accent xl:inline">Full-Stack &amp; Agentic AI</span>
+              <span className="block text-accent xl:inline">Agentic AI &amp; Automation</span>
             </motion.p>
 
             <motion.p
               variants={item}
               className="mt-5 max-w-[60ch] text-base leading-relaxed text-muted sm:text-[1.0625rem] text-pretty"
             >
-              I build production web platforms and LLM-powered systems, from RAG pipelines and
-              autonomous agents to the APIs and interfaces around them.
+              I build production web apps and LLM-powered systems, from agentic workflows, RAG
+              pipelines and AI automations to the APIs and interfaces around them.
             </motion.p>
 
             <motion.div variants={item} className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">

@@ -2,14 +2,19 @@
 
 /* Design tokens — light by default, dark via system preference or explicit toggle */
 :root {
-  --bg: #fafafa;
+  /* Light: cool grey canvas so white cards separate; depth comes from soft shadows */
+  --bg: #f4f5f7;
   --surface: #ffffff;
-  --surface-2: #f4f4f5;
-  --line: #e4e4e7;
-  --line-strong: #d4d4d8;
-  --fg: #09090b;
-  --muted: #52525b;
-  --subtle: #71717a;
+  --surface-2: #f3f4f6;
+  --line: #e2e4e9;
+  --line-strong: #cfd3da;
+  --fg: #0b0d12;
+  --muted: #4a5160;
+  --subtle: #636a78;
+  --shadow-xs: 0 1px 2px rgb(16 24 40 / 0.05);
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 4px 12px -4px rgb(16 24 40 / 0.06);
+  --shadow-card-hover: 0 2px 4px rgb(16 24 40 / 0.04), 0 16px 32px -12px rgb(16 24 40 / 0.16);
+  --hero-wash: 9%;
   /* Accent: warm amber, harmonizes with the profile photo. amber-700 keeps AA on light surfaces. */
   --accent: #b45309;
   --accent-strong: #92400e;
@@ -34,6 +39,10 @@
     --on-accent: #09090b;
     --success: #34d399;
     --danger: #f87171;
+    --shadow-xs: none;
+    --shadow-card: none;
+    --shadow-card-hover: 0 8px 24px -12px rgb(0 0 0 / 0.5);
+    --hero-wash: 6%;
     color-scheme: dark;
   }
 }
@@ -52,6 +61,10 @@
   --on-accent: #09090b;
   --success: #34d399;
   --danger: #f87171;
+  --shadow-xs: none;
+  --shadow-card: none;
+  --shadow-card-hover: 0 8px 24px -12px rgb(0 0 0 / 0.5);
+  --hero-wash: 6%;
   color-scheme: dark;
 }
 
@@ -125,11 +138,12 @@
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: 0.875rem;
+    box-shadow: var(--shadow-card);
     transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
   .card-hover:hover {
     border-color: var(--line-strong);
-    box-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.18);
+    box-shadow: var(--shadow-card-hover);
     transform: translateY(-2px);
   }
   .tag {
@@ -154,12 +168,13 @@
     border-radius: 0.5rem;
     font-size: 0.875rem;
     font-weight: 500;
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
     white-space: nowrap;
   }
   .btn-primary {
     background: var(--fg);
     color: var(--bg);
+    box-shadow: var(--shadow-xs);
   }
   .btn-primary:hover {
     background: var(--accent);
@@ -169,6 +184,7 @@
     background: var(--surface);
     border: 1px solid var(--line);
     color: var(--fg);
+    box-shadow: var(--shadow-xs);
   }
   .btn-secondary:hover {
     border-color: var(--line-strong);
@@ -205,6 +221,7 @@
     height: 2.75rem;
     border: 1px solid var(--line);
     background: var(--surface);
+    box-shadow: var(--shadow-xs);
   }
   .icon-btn-outline:hover {
     border-color: color-mix(in oklab, var(--accent) 50%, var(--line));

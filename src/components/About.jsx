@@ -2,7 +2,7 @@ import { FiBookOpen } from 'react-icons/fi';
 import { education } from '../data/portfolioData';
 import { Section, SectionHeader, Reveal } from './ui';
 
-const focusAreas = ['LLMs & RAG', 'Agentic AI', 'Full-Stack Web', 'Computer Vision', 'NLP', 'MLOps'];
+const focusAreas = ['Agentic AI', 'LLMs & RAG', 'Full-Stack Web', 'AI Automation', 'Computer Vision', 'NLP'];
 
 const About = () => (
   <Section id="about">
@@ -11,15 +11,20 @@ const About = () => (
     <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:gap-14">
       <Reveal className="space-y-5 text-base md:text-lg leading-relaxed">
         <p>
-          I'm a <span className="text-fg font-medium">Software Engineer at LoopVerse Digital</span> in
-          Karachi, where I build full-stack applications and agentic AI systems. I care about shipping
-          software that's reliable in production — clean APIs, thoughtful interfaces, and AI features
-          that are grounded, measurable, and safe.
+          I'm a <span className="text-fg font-medium">Full Stack Engineer at LoopVerse Digital</span> in
+          Karachi. Day to day I build web apps with Next.js and PostgreSQL and add AI features to them
+          using LangGraph.
         </p>
         <p>
-          My work spans <span className="text-fg font-medium">LLMs, Retrieval-Augmented Generation,
-          agentic workflows, NLP and computer vision</span>, paired with end-to-end web development across
-          the MERN and PERN stacks with FastAPI, Docker and PostgreSQL.
+          Before LoopVerse, I built React and Node.js apps at Softvisionist and worked on chatbots and
+          automation workflows at Techrypt. On my own time I've built a legal research assistant that
+          searches nearly 30,000 Pakistani court documents, a health app that explains lab reports in
+          English and Urdu, and n8n and Make.com automations for small businesses.
+        </p>
+        <p>
+          The part of the work I enjoy most is making AI features hold up with real users: getting
+          retrieval right, testing the answers, and having a person review the cases the model isn't
+          sure about.
         </p>
 
         <ul className="flex flex-wrap gap-2 pt-2" aria-label="Focus areas">

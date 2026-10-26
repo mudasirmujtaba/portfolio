@@ -1,17 +1,18 @@
 import {
-  FaLinkedin, FaReact, FaNodeJs, FaPython, FaJava, FaAws, FaBrain,
-  FaLanguage, FaCogs, FaLaptopCode
+  FaLinkedin, FaJava, FaAws
 } from 'react-icons/fa';
 import {
   SiTensorflow, SiMongodb, SiExpress, SiTypescript, SiPostgresql, SiOpencv, SiCoursera,
   SiDatacamp, SiGoogle, SiJavascript, SiPhp, SiPytorch, SiScikitlearn, SiHuggingface,
-  SiNextdotjs, SiFastapi, SiDjango, SiFlask, SiTailwindcss, SiMysql, SiKubernetes,
+  SiNextdotjs, SiFastapi, SiTailwindcss, SiMysql, SiKubernetes,
   SiPython, SiLangchain, SiReact, SiNodedotjs, SiHtml5, SiCss, SiDocker, SiMlflow, SiGit,
-  SiGithubactions, SiJsonwebtokens
+  SiGithubactions, SiJsonwebtokens, SiAnthropic, SiMake, SiTwilio, SiOpenai, SiGooglesheets,
+  SiGooglecalendar
 } from 'react-icons/si';
 import {
   TbSql, TbMessageChatbot, TbDatabaseSearch, TbRobot, TbSparkles, TbBrain, TbNetwork,
-  TbLanguage, TbEye, TbPrompt, TbTopologyStar3, TbApi, TbVectorTriangle, TbInfinity
+  TbLanguage, TbEye, TbPrompt, TbTopologyStar3, TbApi, TbVectorTriangle, TbInfinity, TbWebhook,
+  TbAutomation
 } from 'react-icons/tb';
 import lexibotImg from '../assets/lexibot.png';
 import faceTrackImg from '../assets/FaceTrack Attendance Project.png';
@@ -24,17 +25,19 @@ import remoteSensingImg from '../assets/remote_sensing.png';
 import dailyJournalImg from '../assets/Daily Jounral APP.png';
 import sehatSaathiImg from '../assets/SehatSathi.png';
 import bachatBazarImg from '../assets/BachatBazar.png';
+import aiReceptionistImg from '../assets/make-receptionist-cover.webp';
+import euAutomationImg from '../assets/eu-automation-cover.webp';
 
 export const personalInfo = {
   name: "Mudasir Mujtaba",
-  title: "AI Engineer & Full-Stack Software Engineer",
+  title: "Full Stack Engineer",
   tagline: "Building production-grade AI systems and scalable web applications — from RAG pipelines to full-stack platforms.",
   email: "mudasirmujtaba15@gmail.com",
   phone: "(+92) 311-2304843",
   location: "Karachi, Pakistan",
   linkedin: "https://www.linkedin.com/in/mudasirmujtaba/",
   github: "https://github.com/mudasirmujtaba",
-  bio: "I am an AI Engineer, Full-Stack Software Engineer, and Computer Science graduate of Sukkur IBA University (2022-2026), experienced in building and deploying production-grade AI systems and scalable web applications. I specialize in LLMs, Retrieval-Augmented Generation, Agentic AI, NLP, and Computer Vision, paired with full-stack development across the MERN and PERN stacks."
+  bio: "I am a Full Stack Engineer and Computer Science graduate of Sukkur IBA University (2022-2026), experienced in building and deploying production-grade AI systems and scalable web applications. I specialize in LLMs, Retrieval-Augmented Generation, Agentic AI, NLP, and Computer Vision, paired with full-stack development across the MERN and PERN stacks."
 };
 
 // color: brand hex for logos, "accent" for concept icons, omitted for monochrome brands (render in text color)
@@ -69,6 +72,7 @@ export const skills = [
     items: [
       { name: "LangChain", icon: SiLangchain, color: "#1C9E7E" },
       { name: "LangGraph", icon: TbTopologyStar3, color: "#1C9E7E" },
+      { name: "OpenAI API", icon: SiOpenai },
       { name: "PyTorch", icon: SiPytorch, color: "#EE4C2C" },
       { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" },
       { name: "Hugging Face", icon: SiHuggingface, color: "#FFD21E" },
@@ -84,8 +88,6 @@ export const skills = [
       { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
       { name: "Express.js", icon: SiExpress },
       { name: "FastAPI", icon: SiFastapi, color: "#009688" },
-      { name: "Django", icon: SiDjango, color: "#44B78B" },
-      { name: "Flask", icon: SiFlask },
       { name: "REST APIs", icon: TbApi, color: "accent" },
       { name: "HTML5", icon: SiHtml5, color: "#E34F26" },
       { name: "CSS3", icon: SiCss, color: "#1572B6" },
@@ -99,6 +101,17 @@ export const skills = [
       { name: "pgvector", icon: TbVectorTriangle, color: "#4169E1" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       { name: "MySQL", icon: SiMysql, color: "#4479A1" }
+    ]
+  },
+  {
+    category: "Automation & Integrations",
+    items: [
+      { name: "n8n", icon: TbAutomation, color: "#EA4B71" },
+      { name: "Make.com", icon: SiMake, color: "#A855F7" },
+      { name: "Twilio", icon: SiTwilio, color: "#F22F46" },
+      { name: "Webhooks", icon: TbWebhook, color: "accent" },
+      { name: "Google Sheets", icon: SiGooglesheets, color: "#34A853" },
+      { name: "Google Calendar", icon: SiGooglecalendar, color: "#4285F4" }
     ]
   },
   {
@@ -126,24 +139,43 @@ export const education = {
 export const experience = [
   {
     id: 1,
-    role: "Software Engineer",
-    company: "LoopVerse Digital (Karachi, Pakistan)",
+    role: "Full Stack Engineer",
+    company: "LoopVerse Digital",
+    location: "Karachi, Pakistan",
     duration: "Oct 2026 - Present",
-    description: "Building full-stack applications and agentic AI applications, working across the stack from backend APIs and data layers to user-facing interfaces, and designing LLM-powered agents that automate multi-step workflows."
+    highlights: [
+      "Building full-stack product features with Next.js and PostgreSQL, from data models and APIs to the user interface.",
+      "Developing agentic AI workflows with LangGraph to power LLM-driven features."
+    ],
+    tech: ["JavaScript", "Next.js", "PostgreSQL", "LangGraph"]
   },
   {
     id: 2,
-    role: "Full-Stack Developer",
-    company: "Soft Visionist (Remote)",
+    role: "Full Stack AI Engineer",
+    company: "Softvisionist",
+    type: "Part-time",
+    location: "Islamabad, Pakistan · Remote",
     duration: "Aug 2025 - Apr 2026",
-    description: "Built and maintained web and mobile applications using React.js, Node.js, Express.js, MongoDB, PostgreSQL, Python, and FastAPI, delivering features end to end from API design to user interface. Integrated AI capabilities into production applications, including computer vision features and generative AI chatbot systems powered by LLMs. Collaborated remotely with the team on architecture decisions, code reviews, and delivery timelines."
+    highlights: [
+      "Built and maintained web applications with React.js, Node.js, Express.js, MongoDB, PostgreSQL, and Python, owning features from API design through the user interface.",
+      "Integrated AI capabilities into applications, including computer vision features and generative AI chatbots.",
+      "Worked remotely with the team on code reviews, architecture discussions, and on-time delivery."
+    ],
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB", "PostgreSQL", "Python"]
   },
   {
     id: 3,
-    role: "AI Development and Automation Intern",
-    company: "Techrypt (Karachi, Pakistan)",
+    role: "AI Development & Automation Intern",
+    company: "Techrypt",
+    type: "Internship",
+    location: "Karachi, Pakistan · Remote",
     duration: "Jun 2025 - Aug 2025",
-    description: "Developed AI chatbots and automation workflows using LLMs and n8n for business process optimization. Contributed to CRM development through backend and full-stack feature implementation."
+    highlights: [
+      "Techrypt website: worked as a backend developer, collaborating with the team through GitHub for version control and smooth integration.",
+      "CRM project: contributed across the backend and frontend to design and implement features that improved customer data handling and efficiency.",
+      "Built AI chatbots and automation workflows with n8n and LangChain, applying them to real-world business use cases."
+    ],
+    tech: ["n8n", "LangChain", "GitHub"]
   }
 ];
 
@@ -170,6 +202,26 @@ export const projects = [
     description: "Built an agentic AI web app that explains lab reports and prescriptions in plain language across English, Urdu, and Roman Urdu using OCR (Tesseract, PyMuPDF) and Google Gemini. Implemented RAG grounding over a medical knowledge base (pgvector), multilingual conversational Q&A with context memory, per-user history, and responsible-AI safeguards.",
     tech: ["Next.js", "TypeScript", "FastAPI", "PostgreSQL", "pgvector", "LangChain", "Gemini", "Docker"],
     github: "https://github.com/mudasirmujtaba/SehatSaathi-Agentic-AI-Health-Companion",
+    featured: true
+  },
+  {
+    id: 13,
+    title: "Plumbing AI Receptionist — Make.com Automation",
+    period: "2026",
+    image: aiReceptionistImg,
+    description: "AI-assisted automation that recovers missed calls for plumbing businesses: it texts callers through Twilio, qualifies leads in an AI conversation, books appointments in Google Calendar, flags urgent jobs, and sends follow-ups and review requests.",
+    tech: ["Make.com", "Twilio", "OpenAI", "Google Sheets", "Google Calendar", "Make Data Stores"],
+    github: "https://github.com/mudasirmujtaba/Make.com-AI-Receptionist-for-Plumbing-Services",
+    featured: true
+  },
+  {
+    id: 14,
+    title: "EU Database Update Automation — AI-Assisted n8n Workflow",
+    period: "2026",
+    image: euAutomationImg,
+    description: "Client project: an n8n pipeline that keeps a structured EU records database current. AI agents match incoming changes to records and draft updates with confidence scores, and low-confidence cases go to a human reviewer before anything is written.",
+    tech: ["n8n", "OpenAI API", "Google Sheets", "Webhooks", "JavaScript"],
+    github: "https://github.com/mudasirmujtaba/eu-database-update-automation",
     featured: true
   },
   {
@@ -261,36 +313,29 @@ export const projects = [
   }
 ];
 
+// Newest first; the Certifications section shows the first few and expands on demand
 export const certifications = [
   {
     id: 1,
-    title: "Claude with Amazon Bedrock",
-    platform: "Anthropic / AWS",
-    date: "May 2026",
-    platformIcon: FaAws,
-    skills: ["Claude", "Amazon Bedrock", "LLMs", "Generative AI"],
-    url: "https://verify.skilljar.com/c/m6xdkxq7yq5x",
-    icon: FaBrain
+    title: "Building with the Claude API",
+    platform: "Anthropic",
+    platformIcon: SiAnthropic,
+    url: "https://verify.skilljar.com/c/spd35vtvk6ba"
   },
   {
     id: 2,
+    title: "Claude Code 101",
+    platform: "Anthropic",
+    platformIcon: SiAnthropic,
+    url: "https://verify.skilljar.com/c/novqe5gge4v2"
+  },
+  {
+    id: 3,
     title: "Large Language Models (LLMs) Concepts",
     platform: "DataCamp",
     date: "Jun 2026",
     platformIcon: SiDatacamp,
-    skills: ["LLMs", "Generative AI", "NLP", "Prompt Engineering"],
-    url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/4616cc1d95d5bc6619d1ce1f8e966418e7502132",
-    icon: FaLanguage
-  },
-  {
-    id: 3,
-    title: "Deep Learning and Generative AI",
-    platform: "LinkedIn Learning",
-    date: "Nov 2025",
-    platformIcon: FaLinkedin,
-    skills: ["Deep Learning", "CNNs", "Generative AI", "NLP", "Computer Vision"],
-    url: "https://www.linkedin.com/learning/certificates/5b904ccfac98ccff38f0859dbc14fd97d6553fd2e85627f5c5e4371206a4a69d",
-    icon: FaBrain
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/4616cc1d95d5bc6619d1ce1f8e966418e7502132"
   },
   {
     id: 4,
@@ -298,69 +343,167 @@ export const certifications = [
     platform: "Coursera (Google)",
     date: "Jun 2026",
     platformIcon: SiGoogle,
-    skills: ["Prompt Engineering", "Generative AI", "LLMs"],
-    url: "https://www.coursera.org/account/accomplishments/specialization/I74KQMTAP51K",
-    icon: SiGoogle
+    url: "https://www.coursera.org/account/accomplishments/specialization/I74KQMTAP51K"
   },
   {
     id: 5,
+    title: "Introduction to Claude Cowork",
+    platform: "Anthropic",
+    date: "May 2026",
+    platformIcon: SiAnthropic,
+    url: "https://verify.skilljar.com/c/ywm9mh2dt8pg"
+  },
+  {
+    id: 6,
+    title: "Claude with Amazon Bedrock",
+    platform: "Anthropic / AWS",
+    date: "May 2026",
+    platformIcon: FaAws,
+    url: "https://verify.skilljar.com/c/m6xdkxq7yq5x"
+  },
+  {
+    id: 7,
+    title: "AWS Certified Cloud Practitioner (CLF-C02) Cert Prep",
+    platform: "LinkedIn Learning",
+    date: "Dec 2025",
+    platformIcon: FaAws,
+    url: "https://www.linkedin.com/learning/certificates/d771980c3909d44bc9b4c5315c3772ea8ee9c33f7d0dbf0fb2b6f8a21f36e8e8"
+  },
+  {
+    id: 8,
+    title: "Microsoft Azure Fundamentals (AZ-900) Cert Prep: Cloud Concepts",
+    platform: "LinkedIn Learning",
+    date: "Dec 2025",
+    platformIcon: FaLinkedin,
+    url: "https://www.linkedin.com/learning/certificates/cb80a049b32f42115f459e9d4eaf428b80cf0c522452878df9ee68b54fbdd272"
+  },
+  {
+    id: 9,
+    title: "Deep Learning with Python: Optimizing Deep Learning Models",
+    platform: "LinkedIn Learning",
+    date: "Dec 2025",
+    platformIcon: FaLinkedin,
+    url: "https://www.linkedin.com/learning/certificates/03e97082fd130d066e45ee49256d0bc22e017ae933509e8e87efd6e2d494bab0"
+  },
+  {
+    id: 10,
     title: "MLOps Essentials: Model Development and Integration",
     platform: "LinkedIn Learning",
     date: "Dec 2025",
     platformIcon: FaLinkedin,
-    skills: ["AI", "Machine Learning", "MLOps"],
-    url: "https://www.linkedin.com/learning/certificates/a1074a2923530c09755352c813c922a5eb30708911c90cec936a9e2e9422021e",
-    icon: FaCogs
+    url: "https://www.linkedin.com/learning/certificates/a1074a2923530c09755352c813c922a5eb30708911c90cec936a9e2e9422021e"
   },
   {
-    id: 6,
+    id: 11,
     title: "Software Architecture: Patterns for Developers",
     platform: "LinkedIn Learning",
     date: "Dec 2025",
     platformIcon: FaLinkedin,
-    skills: ["Software Architectures", "Software Engineering"],
-    url: "https://www.linkedin.com/learning/certificates/c6a155f1b03771ab6decc5a6b33233019bf4d9ab0a15b0bcea12f4892d3b685a?trk=share_certificate",
-    icon: FaLaptopCode
+    url: "https://www.linkedin.com/learning/certificates/c6a155f1b03771ab6decc5a6b33233019bf4d9ab0a15b0bcea12f4892d3b685a?trk=share_certificate"
   },
   {
-    id: 7,
-    title: "Python for Data Science, AI and Development",
-    platform: "Coursera (IBM)",
-    date: "Feb 2025",
-    platformIcon: SiCoursera,
-    skills: ["Data Science", "AI Development", "Python"],
-    url: "https://www.coursera.org/account/accomplishments/verify/P5S43UEM8P9Y",
-    icon: FaPython
+    id: 12,
+    title: "Deep Learning and Generative AI",
+    platform: "LinkedIn Learning",
+    date: "Nov 2025",
+    platformIcon: FaLinkedin,
+    url: "https://www.linkedin.com/learning/certificates/5b904ccfac98ccff38f0859dbc14fd97d6553fd2e85627f5c5e4371206a4a69d"
   },
   {
-    id: 8,
-    title: "Developing Front-End Apps with React",
-    platform: "Coursera (IBM)",
-    date: "Apr 2025",
-    platformIcon: SiCoursera,
-    skills: ["React.js", "Frontend Development", "JavaScript"],
-    url: "https://www.coursera.org/account/accomplishments/verify/7C62B6UP16J6",
-    icon: FaReact
+    id: 13,
+    title: "Introduction to Prompt Engineering for Generative AI",
+    platform: "LinkedIn Learning",
+    date: "Nov 2025",
+    platformIcon: FaLinkedin,
+    url: "https://www.linkedin.com/learning/certificates/01d69cb8f5aa5393c2692dd862834696ebc355459824ad633df0b4f611e26348"
   },
   {
-    id: 9,
-    title: "Developing Back-End Apps with Node.js and Express",
-    platform: "Coursera (IBM)",
-    date: "Apr 2025",
-    platformIcon: SiCoursera,
-    skills: ["Node.js", "Express.js", "Backend Developer"],
-    url: "https://www.coursera.org/account/accomplishments/verify/OVHTI06PQS3O",
-    icon: FaNodeJs
-  },
-  {
-    id: 10,
+    id: 14,
     title: "Introduction to MongoDB",
     platform: "MongoDB University",
     date: "May 2025",
     platformIcon: SiMongodb,
-    skills: ["MongoDB Clusters", "Schemas", "Models"],
-    url: "https://learn.mongodb.com/c/iAt4M-RTT1evlr51lCEu4g",
-    icon: SiMongodb
+    url: "https://learn.mongodb.com/c/iAt4M-RTT1evlr51lCEu4g"
+  },
+  {
+    id: 15,
+    title: "Developing Front-End Apps with React",
+    platform: "Coursera (IBM)",
+    date: "Apr 2025",
+    platformIcon: SiCoursera,
+    url: "https://www.coursera.org/account/accomplishments/verify/7C62B6UP16J6"
+  },
+  {
+    id: 16,
+    title: "Developing Back-End Apps with Node.js and Express",
+    platform: "Coursera (IBM)",
+    date: "Apr 2025",
+    platformIcon: SiCoursera,
+    url: "https://www.coursera.org/account/accomplishments/verify/OVHTI06PQS3O"
+  },
+  {
+    id: 17,
+    title: "Introduction to Git and GitHub",
+    platform: "Coursera",
+    date: "Mar 2025",
+    platformIcon: SiCoursera,
+    url: "https://www.coursera.org/account/accomplishments/verify/S9SG6M1SO26V"
+  },
+  {
+    id: 18,
+    title: "Python for Data Science, AI and Development",
+    platform: "Coursera (IBM)",
+    date: "Feb 2025",
+    platformIcon: SiCoursera,
+    url: "https://www.coursera.org/account/accomplishments/verify/P5S43UEM8P9Y"
+  },
+  {
+    id: 19,
+    title: "AI For Everyone",
+    platform: "DeepLearning.AI (Coursera)",
+    date: "Feb 2025",
+    platformIcon: SiCoursera,
+    url: "https://www.coursera.org/account/accomplishments/records/ROP15GE94UXP"
+  },
+  {
+    id: 20,
+    title: "Understanding Machine Learning",
+    platform: "DataCamp",
+    date: "Feb 2025",
+    platformIcon: SiDatacamp,
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/ffd325e0ae8c039d32c8384c9f70a661c81de455"
+  },
+  {
+    id: 21,
+    title: "Understanding Artificial Intelligence",
+    platform: "DataCamp",
+    date: "Feb 2025",
+    platformIcon: SiDatacamp,
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/bb9cd60505b869dc0b95aadd0a913f632da9729c"
+  },
+  {
+    id: 22,
+    title: "Introduction to SQL",
+    platform: "DataCamp",
+    date: "Jun 2024",
+    platformIcon: SiDatacamp,
+    url: "https://www.datacamp.com/statement-of-accomplishment/course/e5c7b9fbcde9a45924f6b64e6c9fe0ec9d9b13e9?raw=1"
+  },
+  {
+    id: 23,
+    title: "Python Data Science Fundamentals",
+    platform: "DataCamp",
+    date: "Apr 2024",
+    platformIcon: SiDatacamp,
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/872ba652144875741b9f46df6859337f96b3605e"
+  },
+  {
+    id: 24,
+    title: "Introduction to Python",
+    platform: "DataCamp",
+    date: "Apr 2024",
+    platformIcon: SiDatacamp,
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/course/1f310d3937b7b2b5574ead3a215438702ed606ab"
   }
 ];
 

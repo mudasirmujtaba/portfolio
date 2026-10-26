@@ -63,7 +63,7 @@ const Navbar = () => {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-200 border-b ${
         isScrolled || menuOpen
-          ? 'bg-bg/80 backdrop-blur-md border-line'
+          ? 'bg-bg/80 backdrop-blur-md border-line shadow-[var(--shadow-xs)]'
           : 'bg-transparent border-transparent'
       }`}
     >
