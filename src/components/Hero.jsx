@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { FiArrowRight, FiMapPin } from 'react-icons/fi';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { personalInfo, experience } from '../data/portfolioData';
+import { personalInfo } from '../data/portfolioData';
 import { IconLink } from './ui';
 import profile400 from '../assets/profile-400.webp';
 import profile800 from '../assets/profile-800.webp';
@@ -19,8 +19,6 @@ const item = {
 };
 
 const Hero = () => {
-  const current = experience[0];
-
   return (
     <section
       id="hero"
@@ -91,8 +89,6 @@ const Hero = () => {
               className="mt-3 text-lg font-medium text-fg/85 sm:text-xl lg:text-2xl text-balance"
             >
               {personalInfo.title}
-              <span className="hidden text-subtle xl:inline" aria-hidden="true"> · </span>
-              <span className="block text-accent xl:inline">{current.role} at {current.company}</span>
             </motion.p>
 
             <motion.p
