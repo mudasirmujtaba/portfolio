@@ -1,5 +1,5 @@
 import { FiBookOpen } from 'react-icons/fi';
-import { education } from '../data/portfolioData';
+import { education, personalInfo } from '../data/portfolioData';
 import { Section, SectionHeader, Reveal } from './ui';
 
 const focusAreas = ['Agentic AI', 'LLMs & RAG', 'Full-Stack Web', 'AI Automation', 'Computer Vision', 'NLP'];
@@ -10,21 +10,11 @@ const About = () => (
 
     <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr] lg:gap-14">
       <Reveal className="space-y-5 text-base md:text-lg leading-relaxed">
+        <p>{personalInfo.bio}</p>
         <p>
-          I'm a <span className="text-fg font-medium">Full Stack Engineer at LoopVerse Digital</span> in
-          Karachi. Day to day I build web apps with Next.js and PostgreSQL and add AI features to them
-          using LangGraph.
-        </p>
-        <p>
-          Before LoopVerse, I built React and Node.js apps at Softvisionist and worked on chatbots and
-          automation workflows at Techrypt. On my own time I've built a legal research assistant that
-          searches nearly 30,000 Pakistani court documents, a health app that explains lab reports in
-          English and Urdu, and n8n and Make.com automations for small businesses.
-        </p>
-        <p>
-          The part of the work I enjoy most is making AI features hold up with real users: getting
-          retrieval right, testing the answers, and having a person review the cases the model isn't
-          sure about.
+          My work spans production web products, industrial AI systems, legal and medical document
+          assistants, and business automation. I focus on taking projects from a real-world problem
+          through implementation, evaluation, and deployment.
         </p>
 
         <ul className="flex flex-wrap gap-2 pt-2" aria-label="Focus areas">
@@ -49,6 +39,7 @@ const About = () => (
           <div className="mt-5 border-t border-line pt-5 text-sm leading-relaxed">
             <p className="text-xs font-medium uppercase tracking-wider text-subtle mb-2">Final year project</p>
             <p>{education.project}</p>
+            <p className="mt-3 text-xs text-subtle">{education.scholarship}</p>
           </div>
         </div>
       </Reveal>

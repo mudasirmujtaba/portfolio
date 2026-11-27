@@ -90,17 +90,16 @@ const Hero = () => {
               variants={item}
               className="mt-3 text-lg font-medium text-fg/85 sm:text-xl lg:text-2xl text-balance"
             >
-              {current.role}
+              {personalInfo.title}
               <span className="hidden text-subtle xl:inline" aria-hidden="true"> · </span>
-              <span className="block text-accent xl:inline">Agentic AI &amp; Automation</span>
+              <span className="block text-accent xl:inline">{current.role} at {current.company}</span>
             </motion.p>
 
             <motion.p
               variants={item}
               className="mt-5 max-w-[60ch] text-base leading-relaxed text-muted sm:text-[1.0625rem] text-pretty"
             >
-              I build production web apps and LLM-powered systems, from agentic workflows, RAG
-              pipelines and AI automations to the APIs and interfaces around them.
+              {personalInfo.tagline}
             </motion.p>
 
             <motion.div variants={item} className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
